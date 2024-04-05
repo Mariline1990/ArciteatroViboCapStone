@@ -1,4 +1,12 @@
+using Microsoft.EntityFrameworkCore;
+using ArciteatroVibo.Models;
+using Microsoft.AspNetCore.Authentication.Cookies;
 var builder = WebApplication.CreateBuilder(args);
+
+// aggiungo il dbcontext
+builder.Services.AddDbContext<ArciteatroViboValentiaContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();

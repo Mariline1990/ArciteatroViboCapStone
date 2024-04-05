@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ArciteatroVibo.Models;
 
@@ -16,4 +17,8 @@ public partial class Home1
     public string? Upload { get; set; }
 
     public string? Video { get; set; }
+
+    [NotMapped]
+    public IFormFile updateimm { get; set; }
+
 }
