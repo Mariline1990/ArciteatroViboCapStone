@@ -1,0 +1,15 @@
+{
+  "version": "1.0",
+  "defaultProvider": "cdnjs",
+  "libraries": [
+    {
+      "library": "font-awesome@6.5.2",
+      "destination": "wwwroot/font-awesome/"
+    },
+    {
+      "provider": "jsdelivr",
+      "library": "@fontsource/montserrat@5.0.17",
+      "destination": "wwwroot/fontsource/montserrat/"
+    }
+  ]
+}
