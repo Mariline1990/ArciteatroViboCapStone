@@ -56,8 +56,9 @@ namespace ArciteatroVibo.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("IdHome1,Foto1,Foto2,Foto3,Upload,Video")] Home1 home1)
+        public async Task<IActionResult> Create([Bind("IdHome1,Foto2,Foto3,Upload,Video,updateimm, updateimmDue, updateimmTre")] Home1 home1)
         { 
+            ModelState.Remove("Foto1"); // quelli che sono obbligatori vanno rimossi soprattutto se ci sono dei campi hidden
            
             if (ModelState.IsValid)
             {
@@ -71,6 +72,30 @@ namespace ArciteatroVibo.Controllers
                     }
 
                     home1.Foto1 = "/immagini/" + home1.updateimm.FileName;
+                }
+
+                if (home1.updateimmDue != null && home1.updateimmDue.Length > 0)
+                {
+                    var path = Path.Combine(_hostingEnvironment.WebRootPath, "immagini", home1.updateimmDue.FileName);
+
+                    using (var Filestream = new FileStream(path, FileMode.Create))
+                    {
+                        await home1.updateimmDue.CopyToAsync(Filestream);
+                    }
+
+                    home1.Foto2 = "/immagini/" + home1.updateimmDue.FileName;
+                }
+
+                if (home1.updateimmTre != null && home1.updateimmTre.Length > 0)
+                {
+                    var path = Path.Combine(_hostingEnvironment.WebRootPath, "immagini", home1.updateimmTre.FileName);
+
+                    using (var Filestream = new FileStream(path, FileMode.Create))
+                    {
+                        await home1.updateimmTre.CopyToAsync(Filestream);
+                    }
+
+                    home1.Foto3 = "/immagini/" + home1.updateimmTre.FileName;
                 }
                 else
                 {

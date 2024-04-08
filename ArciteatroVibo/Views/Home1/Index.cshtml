@@ -3,57 +3,25 @@
 @{
     ViewData["Title"] = "Index";
 }
-
-<h1>Index</h1>
-
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Foto1)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Foto2)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Foto3)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Upload)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Video)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Foto1)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Foto2)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Foto3)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Upload)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Video)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.IdHome1">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.IdHome1">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.IdHome1">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+<div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+        @foreach (var item in Model)
+        {
+            <div class="carousel-item @(item == Model.First() ? "active" : "")">
+                <img src="@Url.Content(item.Foto1)" class="d-block w-100" alt="...">
+                <div class="carousel-caption d-none d-md-block">
+                    <!-- Aggiungi eventuali caption qui -->
+                </div>
+            </div>
+        }
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+   
+</div>
