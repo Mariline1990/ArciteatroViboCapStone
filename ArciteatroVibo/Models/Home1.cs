@@ -29,4 +29,11 @@ public partial class Home1
     [NotMapped]
     public IFormFile updateimmTre { get; set; }
 
+
+    [NotMapped] // Questo campo non verrà mappato nel database
+    public IFormFile UploadUp { get; set; } // Campo per il caricamento del file PDF
+
+    [NotMapped] // Questo campo non verrà mappato nel database
+    public string PdfPath { get; set; }
+
 }
