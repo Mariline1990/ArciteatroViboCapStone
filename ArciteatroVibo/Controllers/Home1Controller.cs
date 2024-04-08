@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Hosting;
 using ArciteatroVibo.Models;
 using Microsoft.AspNetCore.StaticFiles;
+using Microsoft.AspNetCore.Diagnostics;
 
 namespace ArciteatroVibo.Controllers
 {
@@ -57,7 +58,7 @@ namespace ArciteatroVibo.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("IdHome1,Foto2,Foto3,Upload,Video,updateimm, updateimmDue, updateimmTre,UploadUp,PdfPath")] Home1 home1)
+        public async Task<IActionResult> Create([Bind("IdHome1,Foto2,Foto3,Upload,Video,updateimm, updateimmDue, updateimmTre,UploadUp ")] Home1 home1)
         { 
             ModelState.Remove("Foto1"); // quelli che sono obbligatori vanno rimossi soprattutto se ci sono dei campi hidden
            
@@ -98,7 +99,7 @@ namespace ArciteatroVibo.Controllers
 
                     home1.Foto3 = "/immagini/" + home1.updateimmTre.FileName;
                 }
-                if (home1.Upload != null && home1.Upload.Length > 0)
+                if (home1.UploadUp != null && home1.UploadUp.Length > 0)
                 {
                     var provider = new FileExtensionContentTypeProvider();
 
@@ -110,7 +111,7 @@ namespace ArciteatroVibo.Controllers
                     if (provider.TryGetContentType(home1.UploadUp.FileName, out contentType) && contentType == "application/pdf")
                     {
                         // Salva il file PDF nel percorso desiderato
-                        var pdfPath = Path.Combine(_hostingEnvironment.WebRootPath, "immagini", home1.UploadUp.FileName);
+                        var pdfPath = Path.Combine(_hostingEnvironment.WebRootPath, "immagini/Statuto/", home1.UploadUp.FileName);
 
                         using (var fileStream = new FileStream(pdfPath, FileMode.Create))
                         {
@@ -118,7 +119,7 @@ namespace ArciteatroVibo.Controllers
                         }
 
                         // Assegna il percorso del file PDF al modello
-                        home1.PdfPath = "/pdf/" + home1.UploadUp.FileName;
+                        home1.Upload = home1.UploadUp.FileName;
                     }
                 }
                 else
@@ -135,13 +136,34 @@ namespace ArciteatroVibo.Controllers
         }
 
 
-        private MemoryStream DownloadSinghFile(IFormFile file)
+
+
+        public IActionResult DownloadFile(string fileName)
         {
-            MemoryStream ms = new MemoryStream();
-            file.CopyTo(ms);
-            ms.Position = 0;
-            return ms;
+            var filePath = Path.Combine(_hostingEnvironment.WebRootPath, "immagini", "Statuto", fileName);
+
+            // Verifica se il file esiste
+            if (!System.IO.File.Exists(filePath))
+            {
+                return NotFound(); // Restituisce un risultato 404 se il file non esiste
+            }
+
+            // Leggi il file in memoria
+            var memory = new MemoryStream();
+            using (var stream = new FileStream(filePath, FileMode.Open))
+            {
+                stream.CopyTo(memory);
+            }
+            memory.Position = 0;
+
+            // Ottieni il tipo MIME del file
+            var provider = new FileExtensionContentTypeProvider();
+            var contentType = provider.TryGetContentType(fileName, out var detectedContentType) ? detectedContentType : "application/pdf";
+
+            // Restituisci il file come risultato
+            return File(memory, contentType,fileName);
         }
+
 
 
 

@@ -23,10 +23,6 @@
 </div>
 
 
-<div>
-    <a href="">Scarica il nostro statuto</a>
-    <h4>@Html.DisplayFor(modelItem => item.Video)</h4>
-</div>
 
 
 
@@ -35,10 +31,15 @@
         <a asp-action="Details" asp-route-id="@item.IdHome1">Details</a> |
         <a asp-action="Delete" asp-route-id="@item.IdHome1">Delete</a>
     </div>
+        
+        <div>
+            <a href="@Url.Action("DownloadFile", "Home1", new { fileName = item.Upload })">Scarica</a>
 
-
+        </div>
 
     </div>
 
         }
+
+
 
