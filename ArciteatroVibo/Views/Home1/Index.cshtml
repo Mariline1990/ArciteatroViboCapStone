@@ -5,8 +5,8 @@
 }
 @foreach (var item in Model)
         {
-<div>
-<div id="carouselExampleSlidesOnly" class="carousel slide px-0" data-bs-ride="carousel">
+<div class="container">
+   <div id="carouselExampleSlidesOnly" class="carousel slide px-0" data-bs-ride="carousel">
     <div class="carousel-inner">
         <div class="carousel-item active">
                 <img src="@Url.Content(item.Foto1)" class="d-block w-100 card-img-top" alt="...">
@@ -20,24 +20,47 @@
             
     </div>
        
-</div>
+  </div>
 
 
 
 
 
-    <div>
+    @* <div>
         <a asp-action="Edit" asp-route-id="@item.IdHome1">Edit</a> |
         <a asp-action="Details" asp-route-id="@item.IdHome1">Details</a> |
         <a asp-action="Delete" asp-route-id="@item.IdHome1">Delete</a>
-    </div>
+    </div> *@
         
-        <div>
-            <a href="@Url.Action("DownloadFile", "Home1", new { fileName = item.Upload })">Scarica</a>
+       
 
+</div>
+    <div class="interlinea text-light ">
+        <p class="my-0">Se ci vuoi sostenere o vuoi contribuire ai nostri progetti<span class="fw-bold text-light"> vai al tesseramento!</span></p>
+    </div>
+
+    <div class="container justify-content-between ">
+        <h5 class="text-danger mt-5">Chi siamo</h5>
+        <div class="row border-bottom border-danger border-top  mt-2">
+            <div class="col-6"><p class="mt-2">
+                    Donut chupa chups apple pie liquorice brownie candy canes. Dessert muffin powder chocolate cookie pie ice cream. Macaroon caramels candy canes fruitcake macaroon halvah chocolate topping jelly. Chocolate cake jelly-o dessert shortbread cheesecake cake.
+                    Tart sweet roll tootsie roll sweet sesame snaps caramels. Chocolate bar chocolate bar cake tootsie roll dragée apple pie topping gummies. Lollipop candy canes sugar plum oat cake tootsie roll jelly-o danish carrot cake sweet roll. Biscuit marzipan liquorice liquorice biscuit chocolate cake chupa chups.
+            </p></div>
+            <div class="col-6 text-center">
+                <a class="btn  bottonStatuto mt-5 " href="@Url.Action("DownloadFile", "Home1", new { fileName = item.Upload })">Scarica il nostro <span class="fw-bold">Statuto</span></a></div>
+            
         </div>
 
+        <div>
+            <video width="320" height="240" controls>
+                <source src="@Url.Content(item.Video)" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
     </div>
+
+
+    
 
         }
 

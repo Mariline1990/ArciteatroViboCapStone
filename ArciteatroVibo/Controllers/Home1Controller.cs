@@ -58,7 +58,7 @@ namespace ArciteatroVibo.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("IdHome1,Foto2,Foto3,Upload,Video,updateimm, updateimmDue, updateimmTre,UploadUp ")] Home1 home1)
+        public async Task<IActionResult> Create([Bind("IdHome1,Foto2,Foto3,Upload,Video,updateimm, updateimmDue, updateimmTre,UploadUp,Uploadvideo ")] Home1 home1)
         { 
             ModelState.Remove("Foto1"); // quelli che sono obbligatori vanno rimossi soprattutto se ci sono dei campi hidden
            
@@ -122,12 +122,33 @@ namespace ArciteatroVibo.Controllers
                         home1.Upload = home1.UploadUp.FileName;
                     }
                 }
+                if (home1.Uploadvideo != null && home1.Uploadvideo.Length > 0)
+                {
+                    var provider = new FileExtensionContentTypeProvider();
+
+                    // Add new mappings
+                    provider.Mappings[".mp4"] = "video/mp4";
+
+                    // Verifica del tipo MIME per assicurarsi che sia un file PDF
+                    string contentType;
+                    if (provider.TryGetContentType(home1.Uploadvideo.FileName, out contentType) && contentType == "video/mp4")
+                    {
+                        // Salva il file PDF nel percorso desiderato
+                        var pdfPath = Path.Combine(_hostingEnvironment.WebRootPath, "immagini/video/", home1.Uploadvideo.FileName);
+
+                        using (var fileStream = new FileStream(pdfPath, FileMode.Create))
+                        {
+                            await home1.Uploadvideo.CopyToAsync(fileStream);
+                        }
+
+                        // Assegna il percorso del file PDF al modello
+                        home1.Video = home1.Uploadvideo.FileName;
+                    }
+                }
                 else
                 {
                     home1.Foto1 = "/img/alla.jpeg";
                 }
-
-
                 _context.Add(home1);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));

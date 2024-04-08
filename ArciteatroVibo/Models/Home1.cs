@@ -33,6 +33,10 @@ public partial class Home1
     [NotMapped] // Questo campo non verrà mappato nel database
     public IFormFile UploadUp { get; set; } // Campo per il caricamento del file PDF
 
-  
+
+    [NotMapped] // Questo campo non verrà mappato nel database
+    public IFormFile Uploadvideo { get; set; } // Campo per il caricamento del file PDF
+
+
 
 }
