@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Hosting;
 using ArciteatroVibo.Models;
 using Microsoft.AspNetCore.StaticFiles;
 using Microsoft.AspNetCore.Diagnostics;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace ArciteatroVibo.Controllers
 {
@@ -142,7 +143,7 @@ namespace ArciteatroVibo.Controllers
                         }
 
                         // Assegna il percorso del file PDF al modello
-                        home1.Video = home1.Uploadvideo.FileName;
+                        home1.Video =  home1.Uploadvideo.FileName;
                     }
                 }
                 else

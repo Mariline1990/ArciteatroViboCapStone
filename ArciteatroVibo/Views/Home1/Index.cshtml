@@ -51,18 +51,54 @@
             
         </div>
 
-        <div>
-            <video width="320" height="240" controls>
-                <source src="@Url.Content(item.Video)" type="video/mp4">
-                Your browser does not support the video tag.
-            </video>
+       
+
+    </div>
+    <div class="bg-white shadowbox py-3 mt-5">
+        
+        <div class="container">
+            <h4 class="text-end text-danger text-decoration-underline">In primo piano</h4>
+            <div class="text-center">
+                <video width="320" class="m-5" height="240" controls="true" src="@Url.Content("~/immagini/video/"+ item.Video)">
+            </div>
+
         </div>
     </div>
 
-
-    
-
         }
+        <div class="container-fluid sfondoCardGrande ">
+
+    <div class="container p-5 text-light">
+    <div class="row ">
+              <div class="col-3" >
+                <a href="https://www.youtube.com/watch?v=i4TxjvTMR-o" class="h3 link-light">ISCRIVITI ALLA NOSTRA NEWSLETTER</a>
+              </div >
+            <div class="col-8 ">
+                <div class="row rowCardHome">
+                   <div class="col-4">   
+                    <div class="row"> 
+                       <h4>Laboratori</h4> 
+                     </div>   
+                    <div class="row"> 
+                       <h4 class="fw-bold"> Nuovi contenuti</h4> 
+                    </div>  
+                   </div >
+                   <div class="col-4">
+                     <h4> Spettacoli</h4>
+                   </div>
+                </div>
+              </div>
+        
+    </div>
+    <div class="row">
+        <h4>prova 1</h4>
+    </div>
+    </div>
+    <div class="coverCard container">
+        <img src="~/immagini/Mask group.png" class="img-fluid" alt="Alternate Text" />
+        
+    </div>
+    </div>
 
 
 
