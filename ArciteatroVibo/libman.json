@@ -11,5 +11,6 @@
       "library": "@fontsource/montserrat@5.0.17",
       "destination": "wwwroot/fontsource/montserrat/"
     }
+
   ]
 }
