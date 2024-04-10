@@ -1,0 +1,40 @@
+﻿@model IEnumerable<ArciteatroVibo.Models.Commedie>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+<div class="container-fluid  bg-white">
+    <div class="container ">
+
+        <h4 class="py-5 text-end text-danger text-decoration-underline">Commedie</h4>
+        @foreach (var item in Model)
+        {
+            <div class="container ">
+                <div class="row mt-5 justify-content-between">
+                    <div class="col-4 ms-5">
+                        <h5 class="aragostaFont ">  @Html.DisplayFor(modelitem => item.Titolo)</h5>
+                    </div>
+                    <div class="col-4 me-3">
+                        <h5 class="authorColor text-end">  @Html.DisplayFor(modelitem => item.Autore)</h5>
+                    </div>
+                </div>
+                <div class="row paddingPage">
+                    <p>  @Html.DisplayFor(modelitem => item.Trama)</p>
+                    <div class=" row container justify-content-end">
+                        <div class="col-1 py-3">
+                            <a asp-action="Details" class="pinkButton text-end" asp-route-id="@item.IdCommedia">Esplora</a>
+                        </div>
+                    </div>
+                </div>
+                
+
+            </div>
+
+            @*    <a asp-action="Edit" asp-route-id="@item.IdCommedia">Edit</a>
+        <a asp-action="Details" asp-route-id="@item.IdCommedia">Details</a>
+        <a asp-action="Delete" asp-route-id="@item.IdCommedia">Delete</a> *@
+        }
+    </div>
+</div>

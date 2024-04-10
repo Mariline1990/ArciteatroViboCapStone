@@ -6,12 +6,40 @@
         object-position: top
     }
 
+    @mixin pinkButton {
+        background: #CD6161;
+        color: white;
+        border: none;
+        border-radius: 10px;
+    }
+    .boldfont{
+        font-weight:600;
+    }
+    .titleNavbar {
+        text-shadow: 1px 0 #D38F8F, -1px 0 #D38F8F, 0 1px #D38F8F, 0 -1px #D38F8F, 1px 1px #D38F8F, -1px -1px #D38F8F, 1px -1px #D38F8F, -1px 1px #D38F8F;
+    }
+
+    .aragostaFont {
+        color: #F35B5B
+    }
+
+    .paddingPage {
+        padding: 40px;
+        border-block: 1px solid #D38F8F;
+        -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+        -moz-box-sizing: border-box; /* Firefox, Gecko */
+    }
+
     .distance {
         margin-top: 50px;
         font-weight: bold;
     }
 
-
+    .pinkButton {
+        @include pinkButton;
+        padding: 18px 40px;
+        margin-top: 50px
+    }
 
     .cardStyleOddEven {
         &:nth-child(odd) {
@@ -21,6 +49,10 @@
         &:nth-child(even) {
             .colorCard {
                 background-color: #FFF5DC;
+
+                a {
+                    color: black
+                }
             }
         }
 
@@ -35,11 +67,16 @@
 
     .card-img-top {
         @include imageFit;
-        height: 25vw;
+        height: 23vw;
     }
 
     .card-img-small {
         @include imageFit;
         height: 10vw;
+    }
+
+    .popImage:where(:hover) {
+        transform: scale(1.1);
+        transition: transform 0.5s;
     }
 }

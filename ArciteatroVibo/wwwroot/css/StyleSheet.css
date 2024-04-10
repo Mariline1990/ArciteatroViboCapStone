@@ -1,12 +1,38 @@
-﻿body .distance {
+﻿body .boldfont {
+  font-weight: 600;
+}
+body .titleNavbar {
+  text-shadow: 1px 0 #D38F8F, -1px 0 #D38F8F, 0 1px #D38F8F, 0 -1px #D38F8F, 1px 1px #D38F8F, -1px -1px #D38F8F, 1px -1px #D38F8F, -1px 1px #D38F8F;
+}
+body .aragostaFont {
+  color: #F35B5B;
+}
+body .paddingPage {
+  padding: 40px;
+  border-block: 1px solid #D38F8F;
+  -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+  -moz-box-sizing: border-box; /* Firefox, Gecko */
+}
+body .distance {
   margin-top: 50px;
   font-weight: bold;
+}
+body .pinkButton {
+  background: #CD6161;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  padding: 18px 40px;
+  margin-top: 50px;
 }
 body .cardStyleOddEven:nth-child(odd) {
   justify-content: end;
 }
 body .cardStyleOddEven:nth-child(even) .colorCard {
   background-color: #FFF5DC;
+}
+body .cardStyleOddEven:nth-child(even) .colorCard a {
+  color: black;
 }
 body .cardStyleOddEven .colorCard {
   border-block: 15px solid white;
@@ -19,11 +45,15 @@ body .card-img-top {
   width: 100%;
   object-fit: cover;
   object-position: top;
-  height: 25vw;
+  height: 23vw;
 }
 body .card-img-small {
   width: 100%;
   object-fit: cover;
   object-position: top;
   height: 10vw;
+}
+body .popImage:where(:hover) {
+  transform: scale(1.1);
+  transition: transform 0.5s;
 }

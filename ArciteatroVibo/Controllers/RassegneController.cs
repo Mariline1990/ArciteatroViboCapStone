@@ -9,22 +9,22 @@ using ArciteatroVibo.Models;
 
 namespace ArciteatroVibo.Controllers
 {
-    public class LaboratoriosController : Controller
+    public class RassegneController : Controller
     {
         private readonly ArciteatroViboValentiaContext _context;
 
-        public LaboratoriosController(ArciteatroViboValentiaContext context)
+        public RassegneController(ArciteatroViboValentiaContext context)
         {
             _context = context;
         }
 
-        // GET: Laboratorios
+        // GET: Rassegne
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Laboratorios.ToListAsync());
+            return View(await _context.Rassegnes.ToListAsync());
         }
 
-        // GET: Laboratorios/Details/5
+        // GET: Rassegne/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -32,39 +32,39 @@ namespace ArciteatroVibo.Controllers
                 return NotFound();
             }
 
-            var laboratorio = await _context.Laboratorios
-                .FirstOrDefaultAsync(m => m.IdLaboratorio == id);
-            if (laboratorio == null)
+            var rassegne = await _context.Rassegnes
+                .FirstOrDefaultAsync(m => m.IdRassegna == id);
+            if (rassegne == null)
             {
                 return NotFound();
             }
 
-            return View(laboratorio);
+            return View(rassegne);
         }
 
-        // GET: Laboratorios/Create
+        // GET: Rassegne/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Laboratorios/Create
+        // POST: Rassegne/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("IdLaboratorio,Immagine,Titolo,Testo,PostiLiberi")] Laboratorio laboratorio)
+        public async Task<IActionResult> Create([Bind("IdRassegna,Titolo,Locandina,Testo,Edizione,Data,Luogo,Regia,Interpreti,Extra")] Rassegne rassegne)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(laboratorio);
+                _context.Add(rassegne);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(laboratorio);
+            return View(rassegne);
         }
 
-        // GET: Laboratorios/Edit/5
+        // GET: Rassegne/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -72,22 +72,22 @@ namespace ArciteatroVibo.Controllers
                 return NotFound();
             }
 
-            var laboratorio = await _context.Laboratorios.FindAsync(id);
-            if (laboratorio == null)
+            var rassegne = await _context.Rassegnes.FindAsync(id);
+            if (rassegne == null)
             {
                 return NotFound();
             }
-            return View(laboratorio);
+            return View(rassegne);
         }
 
-        // POST: Laboratorios/Edit/5
+        // POST: Rassegne/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("IdLaboratorio,Immagine,Titolo,Testo,PostiLiberi")] Laboratorio laboratorio)
+        public async Task<IActionResult> Edit(int id, [Bind("IdRassegna,Titolo,Locandina,Testo,Edizione,Data,Luogo,Regia,Interpreti,Extra")] Rassegne rassegne)
         {
-            if (id != laboratorio.IdLaboratorio)
+            if (id != rassegne.IdRassegna)
             {
                 return NotFound();
             }
@@ -96,12 +96,12 @@ namespace ArciteatroVibo.Controllers
             {
                 try
                 {
-                    _context.Update(laboratorio);
+                    _context.Update(rassegne);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!LaboratorioExists(laboratorio.IdLaboratorio))
+                    if (!RassegneExists(rassegne.IdRassegna))
                     {
                         return NotFound();
                     }
@@ -112,10 +112,10 @@ namespace ArciteatroVibo.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(laboratorio);
+            return View(rassegne);
         }
 
-        // GET: Laboratorios/Delete/5
+        // GET: Rassegne/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -123,34 +123,34 @@ namespace ArciteatroVibo.Controllers
                 return NotFound();
             }
 
-            var laboratorio = await _context.Laboratorios
-                .FirstOrDefaultAsync(m => m.IdLaboratorio == id);
-            if (laboratorio == null)
+            var rassegne = await _context.Rassegnes
+                .FirstOrDefaultAsync(m => m.IdRassegna == id);
+            if (rassegne == null)
             {
                 return NotFound();
             }
 
-            return View(laboratorio);
+            return View(rassegne);
         }
 
-        // POST: Laboratorios/Delete/5
+        // POST: Rassegne/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var laboratorio = await _context.Laboratorios.FindAsync(id);
-            if (laboratorio != null)
+            var rassegne = await _context.Rassegnes.FindAsync(id);
+            if (rassegne != null)
             {
-                _context.Laboratorios.Remove(laboratorio);
+                _context.Rassegnes.Remove(rassegne);
             }
 
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool LaboratorioExists(int id)
+        private bool RassegneExists(int id)
         {
-            return _context.Laboratorios.Any(e => e.IdLaboratorio == id);
+            return _context.Rassegnes.Any(e => e.IdRassegna == id);
         }
     }
 }

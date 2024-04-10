@@ -1,13 +1,13 @@
 ﻿@model IEnumerable<ArciteatroVibo.Models.Card>
 
 <div class=" shadowbox bg-white">
-    <div class="container ">
-        <h4 class="text-end text-danger text-decoration-underline mt-3">Il nostro portfolio</h4>
+    <div class="container mt-3 ">
+        <h4 class="text-end text-danger text-decoration-underline py-4  mt-3">Il nostro portfolio</h4>
         @foreach (var item in Model)
         {
-            
-            <div class="row cardStyleOddEven">
-                <div class="  my-5 " style="max-width: 740px;">
+
+            <div class="row cardStyleOddEven popImage ">
+                <div class="  my-3 " style="max-width: 740px;">
                     <div class="row g-0">
                         <div class="col-md-6 ">
                             <img src="@Url.Content(item.Foto)" class="img-fluid card-img-small " alt="...">
@@ -15,7 +15,7 @@
 
                         <div class="col-md-6 colorCard " >
                             <div >
-                                <a src="" class=" h3 text-decoration-none link-dark"> @Html.DisplayFor(modelItem => item.Titolo)</a>
+                                <a href="https://localhost:7220/@item.link" class="h2 text-decoration-none align-middle link-light"> @Html.DisplayFor(modelItem => item.Titolo)</a>
                             </div>
                         </div>
                     </div>
