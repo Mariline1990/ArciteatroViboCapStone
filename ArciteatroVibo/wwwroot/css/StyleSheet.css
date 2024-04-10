@@ -2,3 +2,28 @@
   margin-top: 50px;
   font-weight: bold;
 }
+body .cardStyleOddEven:nth-child(odd) {
+  justify-content: end;
+}
+body .cardStyleOddEven:nth-child(even) .colorCard {
+  background-color: #FFF5DC;
+}
+body .cardStyleOddEven .colorCard {
+  border-block: 15px solid white;
+  -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+  -moz-box-sizing: border-box; /* Firefox, Gecko */
+  box-sizing: border-box;
+  background-color: rgba(244, 147, 147, 0.6156862745);
+}
+body .card-img-top {
+  width: 100%;
+  object-fit: cover;
+  object-position: top;
+  height: 25vw;
+}
+body .card-img-small {
+  width: 100%;
+  object-fit: cover;
+  object-position: top;
+  height: 10vw;
+}

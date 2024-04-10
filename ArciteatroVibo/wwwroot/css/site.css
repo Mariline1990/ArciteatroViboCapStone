@@ -30,6 +30,8 @@ ul li{
 
 }
 
+
+
 .immagineGradient {
     -webkit-mask-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0,0,0,1)), to(rgba(0,0,0,0)));
     mask-image: linear-gradient(to bottom, rgba(0,0,0,1), rgba(0,0,0,0))
@@ -54,12 +56,7 @@ ul li{
     border: solid 20px #E77676
 }
 
-.card-img-top {
-    width: 100%;
-    height: 25vw;
-    object-fit: cover;
-    object-position: top
-}
+
 
 .TopNavbar {
     background-color: #9b1b1b;

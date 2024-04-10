@@ -1,7 +1,45 @@
 ﻿body {
 
-    .distance{
+    @mixin imageFit {
+        width: 100%;
+        object-fit: cover;
+        object-position: top
+    }
+
+    .distance {
         margin-top: 50px;
         font-weight: bold;
+    }
+
+
+
+    .cardStyleOddEven {
+        &:nth-child(odd) {
+            justify-content: end;
+        }
+
+        &:nth-child(even) {
+            .colorCard {
+                background-color: #FFF5DC;
+            }
+        }
+
+        .colorCard {
+            border-block: 15px solid white;
+            -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+            -moz-box-sizing: border-box; /* Firefox, Gecko */
+            box-sizing: border-box;
+            background-color: #f493939d;
+        }
+    }
+
+    .card-img-top {
+        @include imageFit;
+        height: 25vw;
+    }
+
+    .card-img-small {
+        @include imageFit;
+        height: 10vw;
     }
 }
