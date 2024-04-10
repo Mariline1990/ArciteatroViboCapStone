@@ -5,38 +5,26 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.AspNetCore.Hosting;
 using ArciteatroVibo.Models;
-using Microsoft.AspNetCore.StaticFiles;
-using Microsoft.AspNetCore.Diagnostics;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace ArciteatroVibo.Controllers
 {
-    public class CardsController : Controller
+    public class ProgettiController : Controller
     {
         private readonly ArciteatroViboValentiaContext _context;
-        private readonly IWebHostEnvironment _hostingEnvironment;
-        public CardsController(ArciteatroViboValentiaContext context, IWebHostEnvironment hostingEnvironment)
+
+        public ProgettiController(ArciteatroViboValentiaContext context)
         {
             _context = context;
-            _hostingEnvironment = hostingEnvironment;
         }
 
-        // GET: Cards
+        // GET: Progetti
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Cards.ToListAsync());
+            return View(await _context.Progettis.ToListAsync());
         }
 
-
-        public IActionResult PartialCard()
-        {
-            var cards = _context.Cards.ToList(); // se itero devo sempre avere una lista
-            return PartialView("_PartialCards", cards);
-        }
-
-        // GET: Cards/Details/5
+        // GET: Progetti/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -44,56 +32,39 @@ namespace ArciteatroVibo.Controllers
                 return NotFound();
             }
 
-            var card = await _context.Cards
-                .FirstOrDefaultAsync(m => m.IdCard == id);
-            if (card == null)
+            var progetti = await _context.Progettis
+                .FirstOrDefaultAsync(m => m.IdProgetto == id);
+            if (progetti == null)
             {
                 return NotFound();
             }
 
-            return View(card);
+            return View(progetti);
         }
 
-        // GET: Cards/Create
+        // GET: Progetti/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Cards/Create
+        // POST: Progetti/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("IdCard,Foto,Titolo,link,FotoCard")] Card card)
+        public async Task<IActionResult> Create([Bind("IdProgetto,Titolo,Testo,Data,Luogo,Immagine,Pdf")] Progetti progetti)
         {
-            ModelState.Remove("Foto");
-           
-
             if (ModelState.IsValid)
             {
-                if (card.FotoCard != null && card.FotoCard.Length > 0)
-                {
-                    var path = Path.Combine(_hostingEnvironment.WebRootPath, "immagini", card.FotoCard.FileName);
-
-                   
-
-                    using (var Filestream = new FileStream(path, FileMode.Create))
-                    {
-                        await card.FotoCard.CopyToAsync(Filestream);
-                    }
-
-                    card.Foto = "/immagini/" + card.FotoCard.FileName;
-                }
-                
-                _context.Add(card);
+                _context.Add(progetti);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(card);
+            return View(progetti);
         }
 
-        // GET: Cards/Edit/5
+        // GET: Progetti/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -101,22 +72,22 @@ namespace ArciteatroVibo.Controllers
                 return NotFound();
             }
 
-            var card = await _context.Cards.FindAsync(id);
-            if (card == null)
+            var progetti = await _context.Progettis.FindAsync(id);
+            if (progetti == null)
             {
                 return NotFound();
             }
-            return View(card);
+            return View(progetti);
         }
 
-        // POST: Cards/Edit/5
+        // POST: Progetti/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("IdCard,Foto,Titolo")] Card card)
+        public async Task<IActionResult> Edit(int id, [Bind("IdProgetto,Titolo,Testo,Data,Luogo,Immagine,Pdf")] Progetti progetti)
         {
-            if (id != card.IdCard)
+            if (id != progetti.IdProgetto)
             {
                 return NotFound();
             }
@@ -125,12 +96,12 @@ namespace ArciteatroVibo.Controllers
             {
                 try
                 {
-                    _context.Update(card);
+                    _context.Update(progetti);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!CardExists(card.IdCard))
+                    if (!ProgettiExists(progetti.IdProgetto))
                     {
                         return NotFound();
                     }
@@ -141,10 +112,10 @@ namespace ArciteatroVibo.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(card);
+            return View(progetti);
         }
 
-        // GET: Cards/Delete/5
+        // GET: Progetti/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -152,34 +123,34 @@ namespace ArciteatroVibo.Controllers
                 return NotFound();
             }
 
-            var card = await _context.Cards
-                .FirstOrDefaultAsync(m => m.IdCard == id);
-            if (card == null)
+            var progetti = await _context.Progettis
+                .FirstOrDefaultAsync(m => m.IdProgetto == id);
+            if (progetti == null)
             {
                 return NotFound();
             }
 
-            return View(card);
+            return View(progetti);
         }
 
-        // POST: Cards/Delete/5
+        // POST: Progetti/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var card = await _context.Cards.FindAsync(id);
-            if (card != null)
+            var progetti = await _context.Progettis.FindAsync(id);
+            if (progetti != null)
             {
-                _context.Cards.Remove(card);
+                _context.Progettis.Remove(progetti);
             }
 
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool CardExists(int id)
+        private bool ProgettiExists(int id)
         {
-            return _context.Cards.Any(e => e.IdCard == id);
+            return _context.Progettis.Any(e => e.IdProgetto == id);
         }
     }
 }

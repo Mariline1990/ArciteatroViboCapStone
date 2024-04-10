@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ArciteatroVibo.Models;
@@ -9,7 +8,6 @@ public partial class Home1
 {
     public int IdHome1 { get; set; }
 
-    [StringLength(500)]
     public string Foto1 { get; set; } = null!;
 
     public string? Foto2 { get; set; }
@@ -36,7 +34,4 @@ public partial class Home1
 
     [NotMapped] // Questo campo non verrà mappato nel database
     public IFormFile Uploadvideo { get; set; } // Campo per il caricamento del file PDF
-
-
-
 }

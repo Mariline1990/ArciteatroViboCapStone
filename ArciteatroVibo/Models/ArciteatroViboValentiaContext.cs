@@ -62,6 +62,7 @@ public partial class ArciteatroViboValentiaContext : DbContext
             entity.HasKey(e => e.IdCard);
 
             entity.Property(e => e.IdCard).HasColumnName("Id_Card");
+            entity.Property(e => e.link).HasColumnName("link");
         });
 
         modelBuilder.Entity<Commedie>(entity =>

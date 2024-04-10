@@ -2,6 +2,8 @@
 @import url('../fontsource/montserrat/400.min.css');
 @import url('../fontsource/montserrat/800.css');
 @import url('../fontsource/montserrat/800.min.css');
+@import url('../fontsource/montserrat/600.min.css');
+@import url('../fontsource/montserrat/600.css');
 
 html {
     font-family: 'Montserrat', sans-serif;
@@ -16,11 +18,19 @@ html {
 }
 
 
+.authorColor {
+    color: #727272
+}
+.footerColor {
+    background-color: #202020
+}
 .stickyNav {
     position: fixed;
     top: 0;
     width: 100%;
     z-index: 1000;
+    border-bottom: 1px solid #e5e5e5;
+    
 }
 
 ul li{
@@ -53,7 +63,10 @@ ul li{
 
 .sfondoCardGrande {
     background-color: #CD6161;
-    border: solid 20px #E77676
+
+    border-block: 15px solid #E77676;
+    -webkit-box-sizing: border-box; 
+    -moz-box-sizing: border-box; 
 }
 
 
@@ -61,7 +74,7 @@ ul li{
 .TopNavbar {
     background-color: #9b1b1b;
 
-    padding: 30px;
+    padding: 40px;
     text-align: center;
 }
 
@@ -73,10 +86,7 @@ ul li{
     padding-block: 18px;
     text-align: center;
     text-decoration: none;
-    display: inline-block;
-   
-    
-
+    display: inline-block;    
 }
 
 
@@ -91,10 +101,12 @@ ul li{
     box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
 }
 
+
 html {
   position: relative;
   min-height: 100%;
 }
+
 
 body {
     background-color: #ffece8;

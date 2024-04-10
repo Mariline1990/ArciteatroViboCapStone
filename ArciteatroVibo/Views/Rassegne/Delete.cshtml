@@ -1,0 +1,75 @@
+﻿@model ArciteatroVibo.Models.Rassegne
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1>Delete</h1>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Rassegne</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Titolo)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Titolo)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Locandina)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Locandina)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Testo)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Testo)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Edizione)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Edizione)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Data)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Data)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Luogo)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Luogo)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Regia)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Regia)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Interpreti)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Interpreti)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Extra)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Extra)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="IdRassegna" />
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <a asp-action="Index">Back to List</a>
+    </form>
+</div>

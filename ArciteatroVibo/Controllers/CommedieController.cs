@@ -5,38 +5,26 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.AspNetCore.Hosting;
 using ArciteatroVibo.Models;
-using Microsoft.AspNetCore.StaticFiles;
-using Microsoft.AspNetCore.Diagnostics;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace ArciteatroVibo.Controllers
 {
-    public class CardsController : Controller
+    public class CommedieController : Controller
     {
         private readonly ArciteatroViboValentiaContext _context;
-        private readonly IWebHostEnvironment _hostingEnvironment;
-        public CardsController(ArciteatroViboValentiaContext context, IWebHostEnvironment hostingEnvironment)
+
+        public CommedieController(ArciteatroViboValentiaContext context)
         {
             _context = context;
-            _hostingEnvironment = hostingEnvironment;
         }
 
-        // GET: Cards
+        // GET: Commedie
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Cards.ToListAsync());
+            return View(await _context.Commedies.ToListAsync());
         }
 
-
-        public IActionResult PartialCard()
-        {
-            var cards = _context.Cards.ToList(); // se itero devo sempre avere una lista
-            return PartialView("_PartialCards", cards);
-        }
-
-        // GET: Cards/Details/5
+        // GET: Commedie/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -44,56 +32,39 @@ namespace ArciteatroVibo.Controllers
                 return NotFound();
             }
 
-            var card = await _context.Cards
-                .FirstOrDefaultAsync(m => m.IdCard == id);
-            if (card == null)
+            var commedie = await _context.Commedies
+                .FirstOrDefaultAsync(m => m.IdCommedia == id);
+            if (commedie == null)
             {
                 return NotFound();
             }
 
-            return View(card);
+            return View(commedie);
         }
 
-        // GET: Cards/Create
+        // GET: Commedie/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Cards/Create
+        // POST: Commedie/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("IdCard,Foto,Titolo,link,FotoCard")] Card card)
+        public async Task<IActionResult> Create([Bind("IdCommedia,Titolo,Autore,Trama,Locandina,Regia,Interpreti,Extra,Foto1,Foto2,Foto3")] Commedie commedie)
         {
-            ModelState.Remove("Foto");
-           
-
             if (ModelState.IsValid)
             {
-                if (card.FotoCard != null && card.FotoCard.Length > 0)
-                {
-                    var path = Path.Combine(_hostingEnvironment.WebRootPath, "immagini", card.FotoCard.FileName);
-
-                   
-
-                    using (var Filestream = new FileStream(path, FileMode.Create))
-                    {
-                        await card.FotoCard.CopyToAsync(Filestream);
-                    }
-
-                    card.Foto = "/immagini/" + card.FotoCard.FileName;
-                }
-                
-                _context.Add(card);
+                _context.Add(commedie);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(card);
+            return View(commedie);
         }
 
-        // GET: Cards/Edit/5
+        // GET: Commedie/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -101,22 +72,22 @@ namespace ArciteatroVibo.Controllers
                 return NotFound();
             }
 
-            var card = await _context.Cards.FindAsync(id);
-            if (card == null)
+            var commedie = await _context.Commedies.FindAsync(id);
+            if (commedie == null)
             {
                 return NotFound();
             }
-            return View(card);
+            return View(commedie);
         }
 
-        // POST: Cards/Edit/5
+        // POST: Commedie/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("IdCard,Foto,Titolo")] Card card)
+        public async Task<IActionResult> Edit(int id, [Bind("IdCommedia,Titolo,Autore,Trama,Locandina,Regia,Interpreti,Extra,Foto1,Foto2,Foto3")] Commedie commedie)
         {
-            if (id != card.IdCard)
+            if (id != commedie.IdCommedia)
             {
                 return NotFound();
             }
@@ -125,12 +96,12 @@ namespace ArciteatroVibo.Controllers
             {
                 try
                 {
-                    _context.Update(card);
+                    _context.Update(commedie);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!CardExists(card.IdCard))
+                    if (!CommedieExists(commedie.IdCommedia))
                     {
                         return NotFound();
                     }
@@ -141,10 +112,10 @@ namespace ArciteatroVibo.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(card);
+            return View(commedie);
         }
 
-        // GET: Cards/Delete/5
+        // GET: Commedie/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -152,34 +123,34 @@ namespace ArciteatroVibo.Controllers
                 return NotFound();
             }
 
-            var card = await _context.Cards
-                .FirstOrDefaultAsync(m => m.IdCard == id);
-            if (card == null)
+            var commedie = await _context.Commedies
+                .FirstOrDefaultAsync(m => m.IdCommedia == id);
+            if (commedie == null)
             {
                 return NotFound();
             }
 
-            return View(card);
+            return View(commedie);
         }
 
-        // POST: Cards/Delete/5
+        // POST: Commedie/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var card = await _context.Cards.FindAsync(id);
-            if (card != null)
+            var commedie = await _context.Commedies.FindAsync(id);
+            if (commedie != null)
             {
-                _context.Cards.Remove(card);
+                _context.Commedies.Remove(commedie);
             }
 
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool CardExists(int id)
+        private bool CommedieExists(int id)
         {
-            return _context.Cards.Any(e => e.IdCard == id);
+            return _context.Commedies.Any(e => e.IdCommedia == id);
         }
     }
 }
