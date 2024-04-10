@@ -11,3 +11,4 @@ function myFunction() {
         navbarCustom.classList.remove("stickyNav");
     }
 }
+var position = document.getElementById("navbarCustom");
