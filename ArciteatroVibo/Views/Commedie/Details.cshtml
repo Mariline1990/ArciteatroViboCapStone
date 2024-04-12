@@ -4,75 +4,99 @@
     ViewData["Title"] = "Details";
 }
 
-<h1>Details</h1>
 
-<div>
-    <h4>Commedie</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Titolo)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Titolo)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Autore)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Autore)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Trama)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Trama)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Locandina)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Locandina)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Regia)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Regia)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Interpreti)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Interpreti)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Extra)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Extra)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Foto1)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Foto1)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Foto2)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Foto2)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Foto3)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Foto3)
-        </dd>
-    </dl>
-</div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model?.IdCommedia">Edit</a> |
-    <a asp-action="Index">Back to List</a>
-</div>
+<div class="container-fluid  bg-white">
+    <div class="container ">
+
+        <h4 class="py-5 text-end text-danger text-decoration-underline">Commedie</h4>
+
+
+        <div class="container ">
+            <div class="row mt-5 justify-content-between">
+                <div class="col-4 ms-5">
+                    <h5 class="aragostaFont ">  @Html.DisplayFor(model => model.Titolo)</h5>
+                </div>
+            </div>
+            <div id="carouselExampleFade" class="carousel slide carousel-fade">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img src="@Url.Content(Model.Foto1)" class="d-block w-100 card-img-normal" alt="...">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="@Url.Content(Model.Foto2)" class="d-block w-100 card-img-normal" alt="...">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="@Url.Content(Model.Foto3)" class="d-block w-100 card-img-normal" alt="...">
+                    </div>
+                </div>
+
+
+
+
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+
+            <div class="row justify-content-between mt-5">
+                <div class="col-3 ">
+                    <div>
+                        <h5 class="aragostaFont "> Regia :</h5>
+                        <p>@Html.DisplayFor(model => model.Regia)</p>
+
+
+                        <h5 class="aragostaFont "> Attori :</h5>
+                        <div>
+                            <ul>
+                                @if (Model.Interpreti != null)
+                                {
+                                    var attori = Model.Interpreti;
+                                    var elemento = attori.Split(",");
+
+                                    foreach (var item in elemento)
+                                    {
+                                        <li>@item</li>
+                                    }
+                                }
+                                else
+                                {
+                                    <li>Non ci sono interpreti</li>
+                                }
+
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-4  ">
+                    <div>
+                        <h5 class="authorColor text-end">  Locandina :</h5>
+                        <img src="@Html.DisplayFor(model => model.Locandina)" class="d-block w-100 " alt="...">
+                    </div>
+                </div>
+                <div class="row  mb-5">
+                    <h5 class="aragostaFont "> Extra :</h5>
+                    <p>  @Html.DisplayFor(model => model.Extra)</p>
+
+                </div>
+
+
+            </div>
+
+            @*    <a asp-action="Edit" asp-route-id="@item.IdCommedia">Edit</a>
+            <a asp-action="Details" asp-route-id="@item.IdCommedia">Details</a>
+            <a asp-action="Delete" asp-route-id="@item.IdCommedia">Delete</a> *@
+
+        </div>
+
+    </div>
+    <div>
+        <a asp-action="Edit" asp-route-id="@Model?.IdCommedia">Edit </a>
+        <a asp-action="Index">Back to List</a>
+    </div>
+    @*   <script src="~/jsCustom/Interpreter.js" asp-append-version="true"></script> *@

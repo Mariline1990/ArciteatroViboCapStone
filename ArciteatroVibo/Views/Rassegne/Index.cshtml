@@ -4,80 +4,42 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
 
-<p>
+
+@* <p>
     <a asp-action="Create">Create New</a>
 </p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Titolo)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Locandina)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Testo)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Edizione)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Data)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Luogo)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Regia)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Interpreti)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Extra)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Titolo)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Locandina)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Testo)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Edizione)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Data)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Luogo)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Regia)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Interpreti)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Extra)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.IdRassegna">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.IdRassegna">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.IdRassegna">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+ *@
+
+<div class="container-fluid bg-white">
+    <div class="container py-5">
+        <div>
+            <h4>
+                Rassegna: Il coraggio delle Donne
+            </h4>
+            <p>
+                Chupa chups chocolate caramels sesame snaps pastry. Sugar plum jelly soufflé biscuit tootsie roll caramels brownie. Chocolate tootsie roll bonbon toffee croissant gingerbread cupcake jelly beans. Marshmallow tiramisu tootsie roll cheesecake cotton candy soufflé powder gummi bears bonbon. Pie cookie powder danish sesame snaps sweet apple pie. Chocolate ice cream bonbon cake wafer pastry. Toffee jelly pudding jelly beans jelly-o carrot cake sweet roll ice cream. Gummies marzipan lollipop chocolate bar danish. Chocolate cake jelly-o cupcake chocolate wafer apple pie topping. Soufflé pudding wafer brownie oat cake. Sesame snaps brownie soufflé liquorice sweet roll gummies. Carrot cake icing chupa chups cake brownie. Gingerbread topping sesame snaps tootsie roll gummi bears. Tootsie roll shortbread carrot cake lollipop soufflé ice cream danish tootsie roll.
+            </p>
+        </div>
+    </div>
+</div>
+<div class="container my-5">
+    
+        <div class="card" style="width: 18rem;">
+            <img src="~/immagini/character 1-.gif" class="card-img-small" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+        </div>
+
+    
+    </div>
+
+
+    @*               <a asp-action="Edit" asp-route-id="@item.IdRassegna">Edit</a> |
+    <a asp-action="Details" asp-route-id="@item.IdRassegna">Details</a> |
+    <a asp-action="Delete" asp-route-id="@item.IdRassegna">Delete</a> *@
+
+

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ArciteatroVibo.Models;
 
@@ -26,4 +27,16 @@ public partial class Commedie
     public string? Foto2 { get; set; }
 
     public string? Foto3 { get; set; }
+
+
+    [NotMapped]
+    public IFormFile LocandinaUp { get; set; }
+
+    [NotMapped]
+    public IFormFile Foto1Up { get; set; }
+    [NotMapped]
+    public IFormFile Foto2Up { get; set; }
+    [NotMapped]
+    public IFormFile Foto3Up { get; set; }
+
 }

@@ -63,7 +63,6 @@ ul li{
 
 .sfondoCardGrande {
     background-color: #CD6161;
-
     border-block: 15px solid #E77676;
     -webkit-box-sizing: border-box; 
     -moz-box-sizing: border-box; 
@@ -73,7 +72,6 @@ ul li{
 
 .TopNavbar {
     background-color: #9b1b1b;
-
     padding: 40px;
     text-align: center;
 }
@@ -92,7 +90,7 @@ ul li{
 
 .interlinea {
     background-color: #9b1b1b;
-    padding: 10px;
+    padding: 15px;
     text-align: center;
 }
 

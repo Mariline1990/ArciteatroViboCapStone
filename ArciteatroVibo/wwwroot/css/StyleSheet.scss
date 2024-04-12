@@ -12,12 +12,16 @@
         border: none;
         border-radius: 10px;
     }
-    .boldfont{
-        font-weight:600;
+
+    .boldfont {
+        font-weight: 600;
     }
+
     .titleNavbar {
         text-shadow: 1px 0 #D38F8F, -1px 0 #D38F8F, 0 1px #D38F8F, 0 -1px #D38F8F, 1px 1px #D38F8F, -1px -1px #D38F8F, 1px -1px #D38F8F, -1px 1px #D38F8F;
     }
+
+
 
     .aragostaFont {
         color: #F35B5B
@@ -65,9 +69,23 @@
         }
     }
 
+    .navImageOutside {
+        z-index: 1;
+        @include imageFit;
+        height: 23vw;
+        position: absolute;
+        top: 0;
+    }
+
     .card-img-top {
         @include imageFit;
         height: 23vw;
+    }
+
+
+    .card-img-normal {
+        @include imageFit;
+        height: 18vw;
     }
 
     .card-img-small {
