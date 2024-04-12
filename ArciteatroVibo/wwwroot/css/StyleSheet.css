@@ -41,11 +41,26 @@ body .cardStyleOddEven .colorCard {
   box-sizing: border-box;
   background-color: rgba(244, 147, 147, 0.6156862745);
 }
+body .navImageOutside {
+  z-index: 1;
+  width: 100%;
+  object-fit: cover;
+  object-position: top;
+  height: 23vw;
+  position: absolute;
+  top: 0;
+}
 body .card-img-top {
   width: 100%;
   object-fit: cover;
   object-position: top;
   height: 23vw;
+}
+body .card-img-normal {
+  width: 100%;
+  object-fit: cover;
+  object-position: top;
+  height: 18vw;
 }
 body .card-img-small {
   width: 100%;

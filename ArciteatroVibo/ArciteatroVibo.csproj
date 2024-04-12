@@ -30,7 +30,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="wwwroot\immagini\Link\" />
+    <Folder Include="wwwroot\immagini\Commedie\" />
+    <Folder Include="wwwroot\immagini\Locandine\" />
     <Folder Include="wwwroot\immagini\video\" />
     <Folder Include="wwwroot\immagini\Statuto\" />
   </ItemGroup>

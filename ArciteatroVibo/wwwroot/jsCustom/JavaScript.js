@@ -14,3 +14,6 @@ function myFunction() {
     }
 }
 var position = document.getElementById("navbarCustom");
+
+
+

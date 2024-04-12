@@ -6,16 +6,23 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using ArciteatroVibo.Models;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.StaticFiles;
+using Microsoft.AspNetCore.Diagnostics;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
+
 
 namespace ArciteatroVibo.Controllers
 {
     public class CommedieController : Controller
     {
         private readonly ArciteatroViboValentiaContext _context;
+        private readonly IWebHostEnvironment _hostingEnvironment;
 
-        public CommedieController(ArciteatroViboValentiaContext context)
+        public CommedieController(ArciteatroViboValentiaContext context, IWebHostEnvironment hostingEnvironment)
         {
             _context = context;
+            _hostingEnvironment = hostingEnvironment;
         }
 
         // GET: Commedie
@@ -53,10 +60,55 @@ namespace ArciteatroVibo.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("IdCommedia,Titolo,Autore,Trama,Locandina,Regia,Interpreti,Extra,Foto1,Foto2,Foto3")] Commedie commedie)
+        public async Task<IActionResult> Create([Bind("IdCommedia,Titolo,Autore,Trama,Locandina,Regia,Interpreti,Extra,Foto1,Foto2,Foto3,LocandinaUp,Foto1Up,Foto2Up,Foto3Up")] Commedie commedie)
         {
             if (ModelState.IsValid)
             {
+                if (commedie.LocandinaUp != null && commedie.LocandinaUp.Length > 0)
+                {
+                    var path = Path.Combine(_hostingEnvironment.WebRootPath, "immagini/Locandine", commedie.LocandinaUp.FileName);
+
+                    using (var Filestream = new FileStream(path, FileMode.Create))
+                    {
+                        await commedie.LocandinaUp.CopyToAsync(Filestream);
+                    }
+                    commedie.Locandina = "/immagini/Locandine/" + commedie.LocandinaUp.FileName;
+                }
+
+                if (commedie.Foto1Up != null && commedie.Foto1Up.Length > 0)
+                {
+                    var path = Path.Combine(_hostingEnvironment.WebRootPath, "immagini/Commedie", commedie.Foto1Up.FileName);
+
+                    using (var Filestream = new FileStream(path, FileMode.Create))
+                    {
+                        await commedie.Foto1Up.CopyToAsync(Filestream);
+                    }
+                    commedie.Foto1 = "/immagini/Commedie/" + commedie.Foto1Up.FileName;
+
+                }
+
+                if (commedie.Foto2Up != null && commedie.Foto2Up.Length > 0)
+                {
+                    var path = Path.Combine(_hostingEnvironment.WebRootPath, "immagini/Commedie", commedie.Foto2Up.FileName);
+
+                    using (var Filestream = new FileStream(path, FileMode.Create))
+                    {
+                        await commedie.Foto2Up.CopyToAsync(Filestream);
+                    }
+                    commedie.Foto2 = "/immagini/Commedie/" + commedie.Foto2Up.FileName;
+                }
+
+                if (commedie.Foto3Up != null && commedie.Foto3Up.Length > 0)
+                {
+                    var path = Path.Combine(_hostingEnvironment.WebRootPath, "immagini/Commedie", commedie.Foto3Up.FileName);
+
+                    using (var Filestream = new FileStream(path, FileMode.Create))
+                    {
+                        await commedie.Foto3Up.CopyToAsync(Filestream);
+                    }
+                    commedie.Foto3 = "/immagini/Commedie/" + commedie.Foto3Up.FileName;
+                }
+
                 _context.Add(commedie);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
