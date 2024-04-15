@@ -17,6 +17,11 @@ html {
   }
 }
 
+.details{
+    
+    font-weight: 400;
+
+}
 
 .authorColor {
     color: #727272

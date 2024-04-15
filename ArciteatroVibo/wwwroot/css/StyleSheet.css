@@ -4,6 +4,17 @@
 body .titleNavbar {
   text-shadow: 1px 0 #D38F8F, -1px 0 #D38F8F, 0 1px #D38F8F, 0 -1px #D38F8F, 1px 1px #D38F8F, -1px -1px #D38F8F, 1px -1px #D38F8F, -1px 1px #D38F8F;
 }
+@media (min-width: 2110px) {
+  body .cardStyleOddEven {
+    justify-content: center;
+  }
+  body .cardStyleOddEven .colorFlexCard {
+    background-color: #FFF5DC;
+  }
+  body .cardStyleOddEven .colorFlexCard a {
+    color: black;
+  }
+}
 body .aragostaFont {
   color: #F35B5B;
 }
@@ -35,18 +46,22 @@ body .pinkButtonSmall {
 body .cardStyleOddEven:nth-child(odd) {
   justify-content: end;
 }
-body .cardStyleOddEven:nth-child(even) .colorCard {
+body .cardStyleOddEven:nth-child(even) .colorFlexCard {
   background-color: #FFF5DC;
 }
-body .cardStyleOddEven:nth-child(even) .colorCard a {
+body .cardStyleOddEven:nth-child(even) .colorFlexCard a {
   color: black;
 }
-body .cardStyleOddEven .colorCard {
+body .cardStyleOddEven .colorFlexCard {
   border-block: 15px solid white;
   -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
   -moz-box-sizing: border-box; /* Firefox, Gecko */
   box-sizing: border-box;
   background-color: rgba(244, 147, 147, 0.6156862745);
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  padding: 16px;
 }
 body .navImageOutside {
   z-index: 1;

@@ -21,8 +21,14 @@
         text-shadow: 1px 0 #D38F8F, -1px 0 #D38F8F, 0 1px #D38F8F, 0 -1px #D38F8F, 1px 1px #D38F8F, -1px -1px #D38F8F, 1px -1px #D38F8F, -1px 1px #D38F8F;
     }
 
+    
+}
 
-
+/*@media (max-width: 1800px) {
+    .cardStyleOddEven {
+        justify-content: center;
+    }
+*/
     .aragostaFont {
         color: #F35B5B
     }
@@ -48,7 +54,6 @@
     .pinkButtonSmall {
         @include pinkButton;
         padding: 10px 20px;
-        
     }
 
     .cardStyleOddEven {
@@ -57,23 +62,27 @@
         }
 
         &:nth-child(even) {
-            .colorCard {
+            .colorFlexCard {
                 background-color: #FFF5DC;
-
+                }
                 a {
                     color: black
                 }
             }
         }
 
-        .colorCard {
+        .colorFlexCard {
             border-block: 15px solid white;
             -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
             -moz-box-sizing: border-box; /* Firefox, Gecko */
             box-sizing: border-box;
             background-color: #f493939d;
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            padding: 16px
         }
-    }
+    
 
     .navImageOutside {
         z-index: 1;
@@ -103,4 +112,4 @@
         transform: scale(1.1);
         transition: transform 0.5s;
     }
-}
+
