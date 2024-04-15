@@ -23,22 +23,32 @@
         </div>
     </div>
 </div>
-<div class="container my-5">
-    
-        <div class="card" style="width: 18rem;">
-            <img src="~/immagini/character 1-.gif" class="card-img-small" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
+<div class=" container my-5">
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col-6">
+                <h5 class="aragostaFont"> @Html.DisplayFor(modelItem => item.Data)</h5>
+                <div class="card" style="width: 30rem;">
+                    <img src="@Url.Content(item.Locandina)" class="card-img-small" alt="...">
+                    <div class="row">
+                        <div class="col-6">
+
+                            <h5 class="aragostaFont card-title pt-2 m-2">@Html.DisplayFor(modelItem => item.Edizione)</h5>
+                        </div>
+                        <div class="col-5 m-2 text-end">
+                            <a asp-action="Details" class=" btn btn pinkButtonSmall " asp-route-id="@item.IdRassegna">Esplora</a>
+                         
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
-
-    
+        }
     </div>
+</div>
 
 
-    @*               <a asp-action="Edit" asp-route-id="@item.IdRassegna">Edit</a> |
+@*               <a asp-action="Edit" asp-route-id="@item.IdRassegna">Edit</a> |
     <a asp-action="Details" asp-route-id="@item.IdRassegna">Details</a> |
     <a asp-action="Delete" asp-route-id="@item.IdRassegna">Delete</a> *@
 

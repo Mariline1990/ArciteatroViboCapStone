@@ -6,65 +6,28 @@
 
 <h1>Details</h1>
 
-<div>
-    <h4>Rassegne</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Titolo)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Titolo)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Locandina)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Locandina)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Testo)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Testo)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Edizione)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Edizione)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Data)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Data)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Luogo)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Luogo)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Regia)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Regia)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Interpreti)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Interpreti)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Extra)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Extra)
-        </dd>
-    </dl>
+<div class="container">
+    <h4 class="py-5 aragostaFont ">Rassegna "Il Coraggio delle Donne"<span> @Html.DisplayFor(model => model.Edizione)</span></h4>
+   <div class="row">
+        <div class="col-6"> <img class="d-block w-100 imageFit" src="@Url.Content(Model.Locandina)" /></div>
+        <div class="col-6">
+            
+            <h4 > @Html.DisplayFor(model=> model.Titolo)</h4>
+            <p>@Html.DisplayFor(model => model.Testo)</p>
+            <div class="row">
+                <div class="col-6">
+                    <p>Luogo: @Html.DisplayFor(model => model.Luogo)</p>
+                    <p>Data: @Html.DisplayFor(model => model.Data)</p>
+                </div>
+                <div class="col-6">
+                    <p>Regia: @Html.DisplayFor(model => model.Regia)</p>
+                    <p>Interpreti: @Html.DisplayFor(model => model.Interpreti)</p>
+                </div>
+            </div>
+        </div>
+   </div>
+
+
 </div>
 <div>
     <a asp-action="Edit" asp-route-id="@Model?.IdRassegna">Edit</a> |
