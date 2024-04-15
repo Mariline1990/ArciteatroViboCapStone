@@ -25,6 +25,13 @@ body .pinkButton {
   padding: 18px 40px;
   margin-top: 50px;
 }
+body .pinkButtonSmall {
+  background: #CD6161;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  padding: 10px 20px;
+}
 body .cardStyleOddEven:nth-child(odd) {
   justify-content: end;
 }

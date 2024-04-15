@@ -45,6 +45,12 @@
         margin-top: 50px
     }
 
+    .pinkButtonSmall {
+        @include pinkButton;
+        padding: 10px 20px;
+        
+    }
+
     .cardStyleOddEven {
         &:nth-child(odd) {
             justify-content: end;

@@ -18,20 +18,16 @@ public partial class Home1
 
     public string? Video { get; set; }
 
-    [NotMapped]
-    public IFormFile updateimm { get; set; }
+    [NotMapped] 
+    public IFormFile? updateimm { get; set; }
 
     [NotMapped]
-    public IFormFile updateimmDue { get; set; }
-
+    public IFormFile? updateimmDue { get; set; }
     [NotMapped]
-    public IFormFile updateimmTre { get; set; }
-
-
-    [NotMapped] // Questo campo non verrà mappato nel database
-    public IFormFile UploadUp { get; set; } // Campo per il caricamento del file PDF
-
-
-    [NotMapped] // Questo campo non verrà mappato nel database
-    public IFormFile Uploadvideo { get; set; } // Campo per il caricamento del file PDF
+    public IFormFile? updateimmTre { get; set; }
+    [NotMapped]
+    public IFormFile? UploadUp { get; set; }
+    [NotMapped]
+    public IFormFile? Uploadvideo { get; set; }
+ 
 }

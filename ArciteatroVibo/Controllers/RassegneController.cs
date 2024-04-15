@@ -7,17 +7,25 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using ArciteatroVibo.Models;
 
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.StaticFiles;
+using Microsoft.AspNetCore.Diagnostics;
+
+
+
+
 namespace ArciteatroVibo.Controllers
 {
     public class RassegneController : Controller
     {
         private readonly ArciteatroViboValentiaContext _context;
+        private readonly IWebHostEnvironment _hostingEnvironment;
 
-        public RassegneController(ArciteatroViboValentiaContext context)
+        public RassegneController(ArciteatroViboValentiaContext context, IWebHostEnvironment hostingEnvironment)
         {
             _context = context;
+            _hostingEnvironment = hostingEnvironment;
         }
-
         // GET: Rassegne
         public async Task<IActionResult> Index()
         {
@@ -53,10 +61,21 @@ namespace ArciteatroVibo.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("IdRassegna,Titolo,Locandina,Testo,Edizione,Data,Luogo,Regia,Interpreti,Extra")] Rassegne rassegne)
+        public async Task<IActionResult> Create([Bind("IdRassegna,Titolo,Locandina,Testo,Edizione,Data,Luogo,Regia,Interpreti,Extra,LocandinaUp")] Rassegne rassegne)
         {
+            ModelState.Remove("Locandina");
             if (ModelState.IsValid)
             {
+                if (rassegne.LocandinaUp != null && rassegne.LocandinaUp.Length > 0)
+                {
+                    var path = Path.Combine(_hostingEnvironment.WebRootPath, "immagini/Locandine", rassegne.LocandinaUp.FileName);
+
+                    using (var Filestream = new FileStream(path, FileMode.Create))
+                    {
+                        await rassegne.LocandinaUp.CopyToAsync(Filestream);
+                    }
+                    rassegne.Locandina = "/immagini/Locandine/" + rassegne.LocandinaUp.FileName;
+                }
                 _context.Add(rassegne);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));

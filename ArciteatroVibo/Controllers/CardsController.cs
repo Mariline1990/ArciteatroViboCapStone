@@ -65,7 +65,7 @@ namespace ArciteatroVibo.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("IdCard,Foto,Titolo,link,FotoCard")] Card card)
+        public async Task<IActionResult> Create([Bind("IdCard,Foto,Titolo,Link,FotoCard")] Card card)
         {
             ModelState.Remove("Foto");
            
