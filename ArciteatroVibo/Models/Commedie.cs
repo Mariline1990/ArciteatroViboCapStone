@@ -38,5 +38,4 @@ public partial class Commedie
     public IFormFile Foto2Up { get; set; }
     [NotMapped]
     public IFormFile Foto3Up { get; set; }
-
 }

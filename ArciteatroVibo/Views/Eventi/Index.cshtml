@@ -1,0 +1,52 @@
+﻿@model IEnumerable<ArciteatroVibo.Models.Eventi>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+    @foreach (var item in Model)
+    {
+    <div class="container-fluid eventiColor ">
+        <div class="container">
+        <div class=" row justify-content-between">
+            <div class="col-6">
+                <h4 class="mt-5">
+                    @Html.DisplayFor(modelitem => item.Titolo)
+
+                </h4>
+                <p>
+                    @Html.DisplayFor(modelitem => item.Sottotitolo)
+                </p>
+                <p>
+                    @Html.DisplayFor(modelitem => item.Data)
+                </p>
+                <p class="mt-5">
+                    @Html.DisplayFor(modelitem => item.Testo)
+                </p>
+            </div>
+            <div class="col-4 mt-5">
+
+                <div class="">
+                    <a href="@Url.Content(item.Locandina)" data-toggle="lightbox" class="lightbox" data-caption="This describes the image">
+                        <img src="@Url.Content(item.Locandina)"  class="d-block  w-100" alt="Alternate Text" />
+                    </a>
+                    
+                </div>
+
+
+
+
+            </div>
+        </div>
+        </div>
+    </div>
+    }
+
+
+@* 
+ <a asp-action="Edit" asp-route-id="@item.IdEvento">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.IdEvento">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.IdEvento">Delete</a>
+
+ *@

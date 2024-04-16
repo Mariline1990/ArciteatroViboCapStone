@@ -14,7 +14,6 @@ public partial class Card
 
     public string? Link { get; set; }
 
-
     [NotMapped]
 
     public IFormFile? FotoCard { get; set; }

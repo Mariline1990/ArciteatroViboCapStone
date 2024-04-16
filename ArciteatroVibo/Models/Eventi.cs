@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ArciteatroVibo.Models;
 
@@ -15,9 +16,12 @@ public partial class Eventi
 
     public string? Luogo { get; set; }
 
-    public string InCorso { get; set; } = null!;
+    public bool InCorso { get; set; }
 
     public string? Testo { get; set; }
 
     public string? Locandina { get; set; }
+
+    [NotMapped]
+    public IFormFile? LocandinaUp { get; set; }
 }

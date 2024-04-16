@@ -14,6 +14,12 @@ body .titleNavbar {
 body .aragostaFont {
   color: #F35B5B;
 }
+body .eventiColor:nth-child(odd) {
+  background-color: #FFF5DC;
+}
+body .eventiColor:nth-child(odd):nth-child(even) {
+  background-color: #D38F8F;
+}
 body .paddingPage {
   padding: 40px;
   border-block: 1px solid #D38F8F;
