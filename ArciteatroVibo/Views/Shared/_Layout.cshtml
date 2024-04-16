@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="~/lib/font-awesome/css/all.min.css" />
     <link rel="stylesheet" href="~/lib/fontsource/montserrat/400.css" />
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha384-valoreSHA384"></script>
+    
 </head>
 <body class="m-0">
     <header>
@@ -31,7 +32,7 @@
                             <a class="nav-link " style="color:#9b1b1b" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
                         <li class="nav-item px-4">
-                            <a class="nav-link  align-items-center" style="color:#9b1b1b" asp-area="" asp-controller="Eventi" asp-action="Create">Eventi</a>
+                            <a class="nav-link  align-items-center" style="color:#9b1b1b" asp-area="" asp-controller="Eventi" asp-action="Index">Eventi</a>
                         </li>
                         <li class="nav-item  bg-black  p-2">
                             <a class="nav-link text-white" asp-area="" asp-controller="Home1" asp-action="Index">ArciteatroVibo</a>
@@ -97,6 +98,7 @@
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/jsCustom/JavaScript.js" asp-append-version="true"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bs5-lightbox@1.8.3/dist/index.bundle.min.js"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 @* <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a> *@

@@ -31,6 +31,18 @@ body {
         color: #F35B5B
     }
 
+
+    .eventiColor {
+        &:nth-child(odd) {
+            background-color: #FFF5DC;
+
+            &:nth-child(even) {
+                background-color: #D38F8F;
+            }
+        }
+    }
+
+
     .paddingPage {
         padding: 40px;
         border-block: 1px solid #D38F8F;

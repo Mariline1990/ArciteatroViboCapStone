@@ -99,9 +99,7 @@ public partial class ArciteatroViboValentiaContext : DbContext
             entity.ToTable("Eventi");
 
             entity.Property(e => e.IdEvento).HasColumnName("Id_Evento");
-            entity.Property(e => e.InCorso)
-                .HasMaxLength(10)
-                .HasColumnName("In_corso");
+            entity.Property(e => e.InCorso).HasColumnName("In_corso");
         });
 
         modelBuilder.Entity<Home1>(entity =>
