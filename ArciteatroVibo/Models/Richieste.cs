@@ -16,4 +16,8 @@ public partial class Richieste
     public int FkUtente { get; set; }
 
     public int FkLaboratorio { get; set; }
+
+    public virtual Laboratorio FkLaboratorioNavigation { get; set; } = null!;
+
+    public virtual Utenti FkUtenteNavigation { get; set; } = null!;
 }

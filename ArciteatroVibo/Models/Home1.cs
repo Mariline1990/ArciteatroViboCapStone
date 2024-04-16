@@ -18,7 +18,7 @@ public partial class Home1
 
     public string? Video { get; set; }
 
-    [NotMapped] 
+    [NotMapped]
     public IFormFile? updateimm { get; set; }
 
     [NotMapped]
@@ -29,5 +29,4 @@ public partial class Home1
     public IFormFile? UploadUp { get; set; }
     [NotMapped]
     public IFormFile? Uploadvideo { get; set; }
- 
 }

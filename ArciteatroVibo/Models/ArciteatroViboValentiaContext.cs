@@ -132,6 +132,9 @@ public partial class ArciteatroViboValentiaContext : DbContext
             entity.ToTable("Laboratorio");
 
             entity.Property(e => e.IdLaboratorio).HasColumnName("Id_Laboratorio");
+            entity.Property(e => e.DataFine).HasColumnName("Data_fine");
+            entity.Property(e => e.DataInizio).HasColumnName("Data_inizio");
+            entity.Property(e => e.EMail).HasColumnName("E_mail");
             entity.Property(e => e.PostiLiberi).HasColumnName("Posti_liberi");
         });
 
@@ -173,6 +176,16 @@ public partial class ArciteatroViboValentiaContext : DbContext
             entity.Property(e => e.Nome)
                 .HasMaxLength(10)
                 .IsFixedLength();
+
+            entity.HasOne(d => d.FkLaboratorioNavigation).WithMany(p => p.Richiestes)
+                .HasForeignKey(d => d.FkLaboratorio)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_Richieste_Laboratorio");
+
+            entity.HasOne(d => d.FkUtenteNavigation).WithMany(p => p.Richiestes)
+                .HasForeignKey(d => d.FkUtente)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_Richieste_Utenti");
         });
 
         modelBuilder.Entity<Utenti>(entity =>
