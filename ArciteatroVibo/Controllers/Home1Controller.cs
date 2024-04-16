@@ -1,15 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using ArciteatroVibo.Models;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.AspNetCore.Hosting;
-using ArciteatroVibo.Models;
 using Microsoft.AspNetCore.StaticFiles;
-using Microsoft.AspNetCore.Diagnostics;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using Microsoft.EntityFrameworkCore;
 
 namespace ArciteatroVibo.Controllers
 {
@@ -62,9 +54,9 @@ namespace ArciteatroVibo.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("IdHome1,Foto2,Foto3,Upload,Video,updateimm, updateimmDue, updateimmTre,UploadUp,Uploadvideo ")] Home1 home1)
-        { 
+        {
             ModelState.Remove("Foto1"); // quelli che sono obbligatori vanno rimossi soprattutto se ci sono dei campi hidden
-           
+
             if (ModelState.IsValid)
             {
                 if (home1.updateimm != null && home1.updateimm.Length > 0)
@@ -145,7 +137,7 @@ namespace ArciteatroVibo.Controllers
                         }
 
                         // Assegna il percorso del file PDF al modello
-                        home1.Video =  home1.Uploadvideo.FileName;
+                        home1.Video = home1.Uploadvideo.FileName;
                     }
                 }
                 else
@@ -185,7 +177,7 @@ namespace ArciteatroVibo.Controllers
             var contentType = provider.TryGetContentType(fileName, out var detectedContentType) ? detectedContentType : "application/pdf";
 
             // Restituisci il file come risultato
-            return File(memory, contentType,fileName);
+            return File(memory, contentType, fileName);
         }
 
 

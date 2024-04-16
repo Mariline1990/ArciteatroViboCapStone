@@ -1,19 +1,15 @@
-﻿body .boldfont {
+﻿body {
+  /*@media (max-width: 1800px) {
+      .cardStyleOddEven {
+          justify-content: center;
+      }
+  */
+}
+body .boldfont {
   font-weight: 600;
 }
 body .titleNavbar {
   text-shadow: 1px 0 #D38F8F, -1px 0 #D38F8F, 0 1px #D38F8F, 0 -1px #D38F8F, 1px 1px #D38F8F, -1px -1px #D38F8F, 1px -1px #D38F8F, -1px 1px #D38F8F;
-}
-@media (min-width: 2110px) {
-  body .cardStyleOddEven {
-    justify-content: center;
-  }
-  body .cardStyleOddEven .colorFlexCard {
-    background-color: #FFF5DC;
-  }
-  body .cardStyleOddEven .colorFlexCard a {
-    color: black;
-  }
 }
 body .aragostaFont {
   color: #F35B5B;
@@ -46,13 +42,26 @@ body .pinkButtonSmall {
 body .cardStyleOddEven:nth-child(odd) {
   justify-content: end;
 }
+@media (max-width: 1800px) {
+  body .cardStyleOddEven:nth-child(odd) {
+    justify-content: center;
+  }
+}
+body .cardStyleOddEven:nth-child(odd) a {
+  color: white;
+}
+@media (max-width: 1800px) {
+  body .cardStyleOddEven:nth-child(even) {
+    justify-content: center;
+  }
+}
 body .cardStyleOddEven:nth-child(even) .colorFlexCard {
   background-color: #FFF5DC;
 }
-body .cardStyleOddEven:nth-child(even) .colorFlexCard a {
+body .cardStyleOddEven:nth-child(even) a {
   color: black;
 }
-body .cardStyleOddEven .colorFlexCard {
+body .colorFlexCard {
   border-block: 15px solid white;
   -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
   -moz-box-sizing: border-box; /* Firefox, Gecko */
@@ -88,7 +97,22 @@ body .card-img-small {
   width: 100%;
   object-fit: cover;
   object-position: top;
-  height: 10vw;
+  height: 12vw;
+}
+@media (max-width: 2000px) {
+  body .card-img-small {
+    height: 15vw;
+  }
+}
+@media (max-width: 1800px) {
+  body .card-img-small {
+    height: 20vw;
+  }
+}
+@media (max-width: 1200px) {
+  body .card-img-small {
+    height: 30vw;
+  }
 }
 body .popImage:where(:hover) {
   transform: scale(1.1);

@@ -1,17 +1,19 @@
-﻿body {
+﻿
+@mixin imageFit {
+    width: 100%;
+    object-fit: cover;
+    object-position: top
+}
 
-    @mixin imageFit {
-        width: 100%;
-        object-fit: cover;
-        object-position: top
-    }
+@mixin pinkButton {
+    background: #CD6161;
+    color: white;
+    border: none;
+    border-radius: 10px;
+}
 
-    @mixin pinkButton {
-        background: #CD6161;
-        color: white;
-        border: none;
-        border-radius: 10px;
-    }
+body {
+
 
     .boldfont {
         font-weight: 600;
@@ -20,11 +22,7 @@
     .titleNavbar {
         text-shadow: 1px 0 #D38F8F, -1px 0 #D38F8F, 0 1px #D38F8F, 0 -1px #D38F8F, 1px 1px #D38F8F, -1px -1px #D38F8F, 1px -1px #D38F8F, -1px 1px #D38F8F;
     }
-
-    
-}
-
-/*@media (max-width: 1800px) {
+    /*@media (max-width: 1800px) {
     .cardStyleOddEven {
         justify-content: center;
     }
@@ -59,30 +57,43 @@
     .cardStyleOddEven {
         &:nth-child(odd) {
             justify-content: end;
-        }
 
-        &:nth-child(even) {
-            .colorFlexCard {
-                background-color: #FFF5DC;
-                }
-                a {
-                    color: black
-                }
+            @media (max-width: 1800px) {
+                justify-content: center;
+            }
+
+            a {
+                color: white
             }
         }
 
-        .colorFlexCard {
-            border-block: 15px solid white;
-            -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
-            -moz-box-sizing: border-box; /* Firefox, Gecko */
-            box-sizing: border-box;
-            background-color: #f493939d;
-            display: flex;
-            justify-content: center;
-            flex-direction: column;
-            padding: 16px
+        &:nth-child(even) {
+            @media (max-width: 1800px) {
+                justify-content: center;
+            }
+
+            .colorFlexCard {
+                background-color: #FFF5DC;
+            }
+
+            a {
+                color: black
+            }
         }
-    
+    }
+
+    .colorFlexCard {
+        border-block: 15px solid white;
+        -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+        -moz-box-sizing: border-box; /* Firefox, Gecko */
+        box-sizing: border-box;
+        background-color: #f493939d;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        padding: 16px
+    }
+
 
     .navImageOutside {
         z-index: 1;
@@ -105,11 +116,23 @@
 
     .card-img-small {
         @include imageFit;
-        height: 10vw;
+        height: 12vw;
+
+        @media (max-width: 2000px) {
+            height: 15vw;
+        }
+
+        @media (max-width: 1800px) {
+            height: 20vw;
+        }
+
+        @media (max-width: 1200px) {
+            height: 30vw;
+        }
     }
 
     .popImage:where(:hover) {
         transform: scale(1.1);
         transition: transform 0.5s;
     }
-
+}

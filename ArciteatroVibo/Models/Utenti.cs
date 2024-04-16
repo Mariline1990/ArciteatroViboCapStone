@@ -18,4 +18,6 @@ public partial class Utenti
     public string? Password { get; set; }
 
     public bool Ruolo { get; set; }
+
+    public virtual ICollection<Richieste> Richiestes { get; set; } = new List<Richieste>();
 }

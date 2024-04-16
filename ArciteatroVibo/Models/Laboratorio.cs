@@ -14,4 +14,16 @@ public partial class Laboratorio
     public string Testo { get; set; } = null!;
 
     public int PostiLiberi { get; set; }
+
+    public string? Testo2 { get; set; }
+
+    public string? EMail { get; set; }
+
+    public int? Telefono { get; set; }
+
+    public DateOnly DataInizio { get; set; }
+
+    public DateOnly? DataFine { get; set; }
+
+    public virtual ICollection<Richieste> Richiestes { get; set; } = new List<Richieste>();
 }
