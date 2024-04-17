@@ -5,24 +5,19 @@
         <h4 class="text-end text-danger text-decoration-underline py-4  mt-3">Il nostro portfolio</h4>
         @foreach (var item in Model)
         {
-
             <div class="row cardStyleOddEven popImage ">
                 <div class=" col-xxl-12  my-3 " style="max-width: 740px;">
                     <div class="row g-0">
                         <div class="col-xl-6">
                             <img src="@Url.Content(item.Foto)" class="  card-img-small " alt="...">
                         </div>
-
-                        <div class="col-xl-6 colorFlexCard " >
-                           
-                                <a href="https://localhost:7220/@item.Link" class="h2 text-decoration-none align-middle link-light"> @Html.DisplayFor(modelItem => item.Titolo)</a>
-                            
+                        <div class="col-xl-6 colorFlexCard " >                         
+                                <a href="https://localhost:7220/@item.Link" class="h2 text-decoration-none align-middle link-light"> @Html.DisplayFor(modelItem => item.Titolo)</a>                          
                         </div>
                     </div>
                 </div>
-            </div>
-           
+            </div>        
         }
     </div>
 </div>
-<script src="~/jsCustom/JavaScript.js" asp-append-version="true"></script>
+
