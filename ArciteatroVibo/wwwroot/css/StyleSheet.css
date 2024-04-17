@@ -1,4 +1,23 @@
-﻿body {
+﻿::-webkit-scrollbar {
+  width: 15px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: lightgray;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #CD6161;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: black;
+}
+
+body {
   /*@media (max-width: 1800px) {
       .cardStyleOddEven {
           justify-content: center;
@@ -15,7 +34,7 @@ body .aragostaFont {
   color: #F35B5B;
 }
 body .eventiColor:nth-child(odd) {
-  background-color: #FFF5DC;
+  background-color: white;
 }
 body .eventiColor:nth-child(odd):nth-child(even) {
   background-color: #D38F8F;
@@ -45,6 +64,12 @@ body .pinkButtonSmall {
   border-radius: 10px;
   padding: 10px 20px;
 }
+body .cardLabOdd:nth-child(odd) .cardLab {
+  background-color: #FFF5DC;
+}
+body .cardLabOdd:nth-child(even) .cardLab {
+  background-color: rgba(244, 147, 147, 0.6156862745);
+}
 body .cardStyleOddEven:nth-child(odd) {
   justify-content: end;
 }
@@ -66,6 +91,22 @@ body .cardStyleOddEven:nth-child(even) .colorFlexCard {
 }
 body .cardStyleOddEven:nth-child(even) a {
   color: black;
+}
+body .badgeOff {
+  background-color: lightgray;
+  color: ghostwhite;
+  padding-inline: 10px;
+  margin-left: 10px;
+  padding-block: 5px;
+  border-radius: 5px;
+  font-size: 20px;
+  font-weight: 600;
+}
+body .titlePage {
+  color: #F35B5B;
+  padding-block: 100px;
+  text-decoration: underline;
+  text-align: end;
 }
 body .colorFlexCard {
   border-block: 15px solid white;
@@ -92,6 +133,19 @@ body .card-img-top {
   object-fit: cover;
   object-position: top;
   height: 23vw;
+  min-height: 300px;
+}
+body .card-img-lab {
+  width: 100%;
+  object-fit: cover;
+  object-position: top;
+  height: 15vw;
+  min-height: 320px;
+}
+@media (max-width: 1200px) {
+  body .card-img-lab {
+    height: 30vw;
+  }
 }
 body .card-img-normal {
   width: 100%;
@@ -104,16 +158,7 @@ body .card-img-small {
   object-fit: cover;
   object-position: top;
   height: 12vw;
-}
-@media (max-width: 2000px) {
-  body .card-img-small {
-    height: 15vw;
-  }
-}
-@media (max-width: 1800px) {
-  body .card-img-small {
-    height: 20vw;
-  }
+  min-height: 320px;
 }
 @media (max-width: 1200px) {
   body .card-img-small {

@@ -1,0 +1,55 @@
+﻿@model IEnumerable<ArciteatroVibo.Models.Laboratorio>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+<div class="container  mt-3 ">
+    <h4 class="titlePage">Laboratori</h4>
+    @foreach (var item in Model)
+    {
+
+        <div class="row justify-content-center cardLabOdd ">
+            <div class=" col-xxl-12  my-3 " style="max-width: 940px;">
+                <div class="row g-0">
+                    <div class="col-xl-4">
+                        <img src="@Url.Content(item.Immagine)" class="card-img-lab" alt="...">
+                    </div>
+
+                    <div class="col-xl-8 p-4 cardLab position-relative">
+                        @if(item.PostiLiberi > 0)
+                        {
+                            <span class="badge bg-dark  position-absolute top-0 start-100 translate-middle">
+                                
+                                   ancora @Html.DisplayFor(modelItem => item.PostiLiberi) posti
+                                
+                            </span>
+                        }
+                        else
+                        {
+                            <span class=" badgeOff ">
+                               posti esauriti
+                            </span>
+                        }
+                        <h4 class=""> @Html.DisplayFor(modelItem => item.Titolo)</h4>
+                        <p>
+                            @Html.DisplayFor(modelItem => item.Testo)
+                        </p>
+                        <div class="row justify-content-end">
+                            <div class="col-3 ">
+                                <div class=" ">
+                                    <a asp-action="Details" class="   btn btn pinkButtonSmall " asp-route-id="@item.IdLaboratorio">Esplora</a>
+
+                                </div>
+                            </div>
+                        </div>
+                        
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    }
+</div>

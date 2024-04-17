@@ -3,17 +3,36 @@
 @{
     ViewData["Title"] = "Index";
 }
+<div class="container  transition-fade" id="swup">
+    <h4 class="titlePage">Eventi</h4>
+</div>
 
-
-    @foreach (var item in Model)
+@* uso model reverse per riordinare gli elementi nel foreach dall'ultimo al primo *@
+@foreach (var item in Model.Reverse())
     {
     <div class="container-fluid eventiColor ">
-        <div class="container">
-        <div class=" row justify-content-between">
-            <div class="col-6">
-                <h4 class="mt-5">
-                    @Html.DisplayFor(modelitem => item.Titolo)
+        <div class="container ">
 
+        <div class=" row justify-content-between">
+               
+                <div class="col-6 my-5">
+                    
+                <h4 class="  mt-5">
+                        @Html.DisplayFor(modelitem => item.Titolo)
+                    @if(item.InCorso == true)
+                    {
+                        <span class="badge bg-dark ms-2">
+                            In corso
+                        </span>
+                    }
+                    else
+                    {
+                            <span class=" badgeOff ">
+                            Evento passato
+                        </span>
+                    }
+                   
+                        
                 </h4>
                 <p>
                     @Html.DisplayFor(modelitem => item.Sottotitolo)
@@ -21,16 +40,23 @@
                 <p>
                     @Html.DisplayFor(modelitem => item.Data)
                 </p>
+                    <p>
+                        @Html.DisplayFor(modelitem => item.Luogo)
+                    </p>
                 <p class="mt-5">
                     @Html.DisplayFor(modelitem => item.Testo)
                 </p>
             </div>
-            <div class="col-4 mt-5">
+                <div class="col-3 my-5  ">
 
-                <div class="">
-                    <a href="@Url.Content(item.Locandina)" data-toggle="lightbox" class="lightbox" data-caption="This describes the image">
-                        <img src="@Url.Content(item.Locandina)"  class="d-block  w-100" alt="Alternate Text" />
+                <div>
+                        <a href="@Url.Content(item.Locandina)" data-toggle="lightbox" data-size="fullscreen" data-caption="This describes the image">
+                        <img src="@Url.Content(item.Locandina)"  class="d-block mt-5 w-100 shadow " alt="Alternate Text" />
+
                     </a>
+                    <p class="aragostaFont">
+                         Clicca per ingrandire
+                    </p>
                     
                 </div>
 
