@@ -12,7 +12,26 @@
     border-radius: 10px;
 }
 
+
+
+::-webkit-scrollbar {
+    width: 15px;
+}
+/* Track */
+::-webkit-scrollbar-track {
+    background: lightgray;
+}
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #CD6161;
+}
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: black;
+}
+
 body {
+
 
 
     .boldfont {
@@ -27,6 +46,12 @@ body {
         justify-content: center;
     }
 */
+
+
+
+
+
+
     .aragostaFont {
         color: #F35B5B
     }
@@ -34,7 +59,7 @@ body {
 
     .eventiColor {
         &:nth-child(odd) {
-            background-color: #FFF5DC;
+            background-color: white;
 
             &:nth-child(even) {
                 background-color: #D38F8F;
@@ -66,6 +91,20 @@ body {
         padding: 10px 20px;
     }
 
+    .cardLabOdd {
+        &:nth-child(odd) {
+            .cardLab {
+                background-color: #FFF5DC;
+            }
+        }
+
+        &:nth-child(even) {
+            .cardLab {
+                background-color: #f493939d;
+            }
+        }
+    }
+
     .cardStyleOddEven {
         &:nth-child(odd) {
             justify-content: end;
@@ -94,6 +133,25 @@ body {
         }
     }
 
+    .badgeOff {
+        background-color: lightgray;
+        color: ghostwhite;
+        padding-inline: 10px;
+        margin-left: 10px;
+        padding-block: 5px;
+        border-radius: 5px;
+        font-size: 20px;
+        font-weight: 600;
+    }
+
+
+    .titlePage {
+        color: #F35B5B;
+        padding-block: 100px;
+        text-decoration: underline;
+        text-align: end;
+    }
+
     .colorFlexCard {
         border-block: 15px solid white;
         -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
@@ -118,8 +176,18 @@ body {
     .card-img-top {
         @include imageFit;
         height: 23vw;
+        min-height: 300px;
     }
 
+
+    .card-img-lab {
+        @include imageFit;
+        height: 15vw;
+        min-height: 320px;
+        @media (max-width: 1200px) {
+            height: 30vw;
+        }
+    }
 
     .card-img-normal {
         @include imageFit;
@@ -129,14 +197,10 @@ body {
     .card-img-small {
         @include imageFit;
         height: 12vw;
+        min-height: 320px;
 
-        @media (max-width: 2000px) {
-            height: 15vw;
-        }
 
-        @media (max-width: 1800px) {
-            height: 20vw;
-        }
+
 
         @media (max-width: 1200px) {
             height: 30vw;
