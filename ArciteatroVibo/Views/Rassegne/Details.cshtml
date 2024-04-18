@@ -6,14 +6,14 @@
 
 
 
-<div class="container">
-    <h4 class="py-5 text-decoration-underline aragostaFont ">Rassegna "Il Coraggio delle Donne":<span> "@Html.DisplayFor(model => model.Edizione)"</span></h4>
-    <div class="row">
+<div class="container my-5 ">
+    <h5 class="py-5 text-decoration-underline aragostaFont ">Rassegna "Il Coraggio delle Donne":<span> "@Html.DisplayFor(model => model.Edizione)"</span></h5>
+    <div class="row justify-content-between">
         <div class="col-6">
             <img class="d-block w-100 imageFit" src="@Url.Content(Model.Locandina)" />
 
         </div>
-        <div class="col-6">
+        <div class="col-5">
 
             <h5 class="aragostaFont"> @Html.DisplayFor(model => model.Titolo)</h5>
             <p>@Html.DisplayFor(model => model.Testo)</p>
@@ -29,7 +29,7 @@
 
                 </div>
                 <div class="row">
-                    <div class="col-6">
+                    <div class="col-6 my-5">
                         <h5 class="aragostaFont">Interpreti :</h5>
                         <ul>
                             @if (Model.Interpreti != null)
@@ -57,6 +57,7 @@
                     </div>
                 </div>
             </div>
+            <a asp-action="Index" class="aragostaFont">Torna indietro</a>
         </div>
     </div>
 

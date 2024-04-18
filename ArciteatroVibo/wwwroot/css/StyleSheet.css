@@ -102,6 +102,11 @@ body .badgeOff {
   font-size: 20px;
   font-weight: 600;
 }
+body .flexCard {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
 body .titlePage {
   color: #F35B5B;
   padding-block: 100px;

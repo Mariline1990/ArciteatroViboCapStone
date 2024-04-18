@@ -42,10 +42,10 @@ namespace ArciteatroVibo.Controllers
             return View(contattaci);
         }
 
-        public IActionResult PartialForm()
-        {  
-            return PartialView("_PartialForm");
-        }
+        //public IActionResult PartialForm()
+        //{  
+        //    return PartialView("_PartialForm");
+        //}
 
 
         // GET: Contattaci/Create

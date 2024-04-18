@@ -144,6 +144,11 @@ body {
         font-weight: 600;
     }
 
+    .flexCard {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+    }
 
     .titlePage {
         color: #F35B5B;
@@ -184,6 +189,7 @@ body {
         @include imageFit;
         height: 15vw;
         min-height: 320px;
+
         @media (max-width: 1200px) {
             height: 30vw;
         }
