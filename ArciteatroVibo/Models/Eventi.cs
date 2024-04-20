@@ -22,6 +22,8 @@ public partial class Eventi
 
     public string? Locandina { get; set; }
 
+    public decimal? BigliettoCosto { get; set; }
+
     [NotMapped]
     public IFormFile? LocandinaUp { get; set; }
 }

@@ -34,5 +34,5 @@ public partial class Laboratorio
     [NotMapped]
     public IFormFile? ImmagineUp { get; set; }
 
-
+    public decimal? Costo { get; set; }
 }
