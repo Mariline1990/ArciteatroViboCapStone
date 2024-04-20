@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="~/ArciteatroVibo.styles.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/lib/font-awesome/css/all.min.css" />
     <link rel="stylesheet" href="~/lib/fontsource/montserrat/400.css" />
+   
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha384-valoreSHA384"></script>
     
    
@@ -30,9 +31,16 @@
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between" >
                     <ul class="navbar-nav flex-grow-1 justify-content-center" >
+                        <li class="me-0">
+                            <a class="nav-link" style="color:#9b1b1b" asp-area="" asp-controller="Utenti" style="display: inline" asp-action="Login">Login</a>
+                            
+                        </li>
+                        <li class="mx-0 mt-2">
+                            <img src="~/immagini/mask-happly-svgrepo-com.svg" height="30" />
+                        </li>
                         <li class="nav-item px-4">
                             <a class="nav-link " style="color:#9b1b1b" asp-area="" asp-controller="Home1" asp-action="Index">Home</a>
-                        </li>
+                        </li> 
                         <li class="nav-item px-4">
                             <a class="nav-link  align-items-center" style="color:#9b1b1b" asp-area="" asp-controller="Eventi" asp-action="Index">Eventi</a>
                         </li>
@@ -41,11 +49,12 @@
                         </li>
                        
                         <li class="nav-item px-4">
-                            <a class="nav-link" style="color:#9b1b1b" asp-area="" asp-controller="Laboratorio" asp-action="Index">Laboratorio</a>
+                            <a class="nav-link " style="color:#9b1b1b" asp-area="" asp-controller="Laboratorio" asp-action="Index">Laboratorio</a>
                         </li>
                         <li class="nav-item px-4">
                             <a class="nav-link" style="color:#9b1b1b" asp-area="" asp-controller="Contattaci" asp-action="Create">Contatti</a>
                         </li>
+                       
                     </ul>
                 </div>
             </div>

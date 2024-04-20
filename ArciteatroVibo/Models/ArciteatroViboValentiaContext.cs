@@ -99,6 +99,7 @@ public partial class ArciteatroViboValentiaContext : DbContext
             entity.ToTable("Eventi");
 
             entity.Property(e => e.IdEvento).HasColumnName("Id_Evento");
+            entity.Property(e => e.BigliettoCosto).HasColumnType("decimal(18, 2)");
             entity.Property(e => e.InCorso).HasColumnName("In_corso");
         });
 
@@ -130,6 +131,7 @@ public partial class ArciteatroViboValentiaContext : DbContext
             entity.ToTable("Laboratorio");
 
             entity.Property(e => e.IdLaboratorio).HasColumnName("Id_Laboratorio");
+            entity.Property(e => e.Costo).HasColumnType("decimal(18, 2)");
             entity.Property(e => e.DataFine).HasColumnName("Data_fine");
             entity.Property(e => e.DataInizio).HasColumnName("Data_inizio");
             entity.Property(e => e.EMail).HasColumnName("E_mail");
@@ -169,6 +171,7 @@ public partial class ArciteatroViboValentiaContext : DbContext
                 .HasMaxLength(10)
                 .IsFixedLength()
                 .HasColumnName("Corpo_richiesta");
+            entity.Property(e => e.DataDiNascita).HasColumnName("Data_di_nascita");
             entity.Property(e => e.FkLaboratorio).HasColumnName("fk_laboratorio");
             entity.Property(e => e.FkUtente).HasColumnName("fk_utente");
             entity.Property(e => e.Nome)
@@ -193,18 +196,10 @@ public partial class ArciteatroViboValentiaContext : DbContext
             entity.ToTable("Utenti");
 
             entity.Property(e => e.IdUtente).HasColumnName("Id_Utente");
-            entity.Property(e => e.Cognome)
-                .HasMaxLength(10)
-                .IsFixedLength();
-            entity.Property(e => e.Email)
-                .HasMaxLength(10)
-                .IsFixedLength();
-            entity.Property(e => e.Nome)
-                .HasMaxLength(10)
-                .IsFixedLength();
-            entity.Property(e => e.Password)
-                .HasMaxLength(10)
-                .IsFixedLength();
+            entity.Property(e => e.Cognome).HasMaxLength(100);
+            entity.Property(e => e.Email).HasMaxLength(100);
+            entity.Property(e => e.Nome).HasMaxLength(100);
+            entity.Property(e => e.Password).HasMaxLength(100);
         });
 
         OnModelCreatingPartial(modelBuilder);
