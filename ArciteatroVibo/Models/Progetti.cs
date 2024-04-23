@@ -18,4 +18,6 @@ public partial class Progetti
     public string? Immagine { get; set; }
 
     public string? Pdf { get; set; }
+
+
 }

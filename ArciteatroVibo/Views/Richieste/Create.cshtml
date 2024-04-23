@@ -1,42 +1,46 @@
 ﻿@model ArciteatroVibo.Models.Richieste
 
+
+
 @{
     ViewData["Title"] = "Create";
 }
 
-<h1>Create</h1>
-
-<h4>Richieste</h4>
+<h5 class="aragostaFont">La tua iscrizione</h5>
 <hr />
 <div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div class="col-md-12" mb-5>
+        <form asp-action="Create" enctype="multipart/form-data">
+            <div  class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="Nome" class="control-label"></label>
                 <input asp-for="Nome" class="form-control" />
                 <span asp-validation-for="Nome" class="text-danger"></span>
             </div>
+           
             <div class="form-group">
                 <label asp-for="Cognome" class="control-label"></label>
                 <input asp-for="Cognome" class="form-control" />
                 <span asp-validation-for="Cognome" class="text-danger"></span>
             </div>
             <div class="form-group">
+                <label asp-for="DataNascita" class="control-label"></label>
+                <input asp-for="DataNascita" class="form-control" />
+                <span asp-validation-for="DataNascita" class="text-danger"></span>
+            </div>
+            <div class="form-group">
                 <label asp-for="CorpoRichiesta" class="control-label"></label>
-                <input asp-for="CorpoRichiesta" class="form-control" />
+                <textarea asp-for="CorpoRichiesta" class="form-control" style="height: 200px"></textarea>
                 <span asp-validation-for="CorpoRichiesta" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="FkUtente" class="control-label"></label>
-                <select asp-for="FkUtente" class ="form-control" asp-items="ViewBag.FkUtente"></select>
+            <div class="form-group ">         
+                <input asp-for="FkUtente" class="form-control" value="@ViewBag.Utente" hidden/>       
             </div>
-            <div class="form-group">
-                <label asp-for="FkLaboratorio" class="control-label"></label>
-                <select asp-for="FkLaboratorio" class ="form-control" asp-items="ViewBag.FkLaboratorio"></select>
+            <div class="form-group">               
+                <input asp-for="FkLaboratorio" class="form-control" value="@ViewBag.Laboratorio"  />
             </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+            <div class="form-group my-5 text-end">
+                <input type="submit" value="Create" class="pinkButtonSmall " />
             </div>
         </form>
     </div>

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
 
 namespace ArciteatroVibo.Models;
 
@@ -29,10 +29,10 @@ public partial class Laboratorio
 
     public DateOnly? DataFine { get; set; }
 
-    public virtual ICollection<Richieste> Richiestes { get; set; } = new List<Richieste>();
+    public decimal? Costo { get; set; }
 
     [NotMapped]
     public IFormFile? ImmagineUp { get; set; }
 
-    public decimal? Costo { get; set; }
+    public virtual ICollection<Richieste> Richiestes { get; set; } = new List<Richieste>();
 }

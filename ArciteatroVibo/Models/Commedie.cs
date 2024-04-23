@@ -1,5 +1,4 @@
-﻿
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -28,7 +27,6 @@ public partial class Commedie
     public string? Foto2 { get; set; }
 
     public string? Foto3 { get; set; }
-
     [NotMapped]
     public IFormFile? LocandinaUp { get; set; }
 
