@@ -6,17 +6,25 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using ArciteatroVibo.Models;
+using System.Security.Claims;
 
 namespace ArciteatroVibo.Controllers
 {
     public class RichiesteController : Controller
     {
         private readonly ArciteatroViboValentiaContext _context;
+     
 
-        public RichiesteController(ArciteatroViboValentiaContext context)
+
+        public RichiesteController(ArciteatroViboValentiaContext context )
         {
             _context = context;
+            
         }
+
+
+            
+
 
         // GET: Richieste
         public async Task<IActionResult> Index()
@@ -45,10 +53,13 @@ namespace ArciteatroVibo.Controllers
             return View(richieste);
         }
 
-
-        public IActionResult PartialForm()
+       // creo artificiosamente il mio id PartialForm prendendo l'id del laboratorio
+        public IActionResult PartialForm(int?id)
         {
+          
+                ViewBag.Laboratorio = id;
 
+            TempData["Laboratorio"] = id;
 
             return PartialView("_PartialForm");
         }
@@ -56,9 +67,7 @@ namespace ArciteatroVibo.Controllers
 
         // GET: Richieste/Create
         public IActionResult Create()
-        {
-            ViewData["FkLaboratorio"] = new SelectList(_context.Laboratorios, "IdLaboratorio", "IdLaboratorio");
-            ViewData["FkUtente"] = new SelectList(_context.Utentis, "IdUtente", "IdUtente");
+        {      
             return View();
         }
 
@@ -66,17 +75,31 @@ namespace ArciteatroVibo.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
+
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("IdRichiesta,Nome,Cognome,CorpoRichiesta,FkUtente,FkLaboratorio")] Richieste richieste)
+      
+        public async Task<IActionResult> Create([Bind("IdRichiesta,Nome,Cognome,CorpoRichiesta,DataNascita,FkUtente,FkLaboratorio")] Richieste richieste)
         {
+            ViewBag.Laboratorio = TempData["Laboratorio"];
+
+            ModelState.Remove("FkUtenteNavigation");
+            ModelState.Remove("FkLaboratorioNavigation");
+
+           var userId = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+           var utente = _context.Utentis.FirstOrDefault(u => u.IdUtente == int.Parse(userId));   
+           ViewBag.Utente = utente.IdUtente; // Accedi all'ID dell'utente
+
+   
+
             if (ModelState.IsValid)
             {
+
+
                 _context.Add(richieste);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["FkLaboratorio"] = new SelectList(_context.Laboratorios, "IdLaboratorio", "IdLaboratorio", richieste.FkLaboratorio);
-            ViewData["FkUtente"] = new SelectList(_context.Utentis, "IdUtente", "IdUtente", richieste.FkUtente);
+            
             return View(richieste);
         }
 
@@ -93,8 +116,7 @@ namespace ArciteatroVibo.Controllers
             {
                 return NotFound();
             }
-            ViewData["FkLaboratorio"] = new SelectList(_context.Laboratorios, "IdLaboratorio", "IdLaboratorio", richieste.FkLaboratorio);
-            ViewData["FkUtente"] = new SelectList(_context.Utentis, "IdUtente", "IdUtente", richieste.FkUtente);
+          
             return View(richieste);
         }
 

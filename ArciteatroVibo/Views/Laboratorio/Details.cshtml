@@ -53,7 +53,7 @@
     @section scripts {
 
         <script>
-            $('#FormZone').load("/Richieste/PartialForm");
+            $('#FormZone').load("/Richieste/PartialForm/@Html.DisplayFor(model => model.IdLaboratorio)");
         </script>
     }
     @* <a asp-action="Edit" asp-route-id="@Model?.IdLaboratorio">Edit</a> |

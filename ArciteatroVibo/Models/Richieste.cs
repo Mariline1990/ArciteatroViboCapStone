@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace ArciteatroVibo.Models;
 
@@ -17,7 +18,9 @@ public partial class Richieste
 
     public int FkLaboratorio { get; set; }
 
-    public int? DataDiNascita { get; set; }
+    [DataType(DataType.Date)]
+    [DisplayFormat(DataFormatString = "{0:dd.MM.yyyy}", ApplyFormatInEditMode = true)]
+    public DateOnly? DataNascita { get; set; }
 
     public virtual Laboratorio FkLaboratorioNavigation { get; set; } = null!;
 
