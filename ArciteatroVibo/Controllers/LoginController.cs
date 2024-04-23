@@ -6,6 +6,10 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using ArciteatroVibo.Models;
+using System.Security.Claims;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authentication;
+
 
 namespace ArciteatroVibo.Controllers
 {
@@ -48,20 +52,54 @@ namespace ArciteatroVibo.Controllers
             return View();
         }
 
+
+
+      
+
         // POST: Login/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("IdUtente,Newsletter,Nome,Cognome,Email,Password,Ruolo")] Utenti utenti)
+        public async Task<IActionResult> Create( Utenti utenti)
         {
-            if (ModelState.IsValid)
+                if (!string.IsNullOrEmpty(utenti.Email) && !string.IsNullOrEmpty(utenti.Password))
+                {
+                    var user = _context.Utentis.FirstOrDefault(u => u.Email == utenti.Email);
+                  
+
+                    if (user != null && VerifyPasswordHash(utenti.Password, user.Password))
+                    {
+                        string roleName = user.Ruolo ? "Admin" : "User";
+
+                   
+                        var claims = new List<Claim>
             {
-                _context.Add(utenti);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-            }
-            return View(utenti);
+                new Claim(ClaimTypes.Email, user.Email), // nome
+                new Claim(ClaimTypes.Role, roleName), // Usa il nome del ruolo qui
+                new Claim(ClaimTypes.NameIdentifier, user.IdUtente.ToString()), // id
+                 
+               
+
+
+
+            };
+
+                        var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+                        var authProperties = new AuthenticationProperties();
+
+                        await HttpContext.SignInAsync(
+                    CookieAuthenticationDefaults.AuthenticationScheme,
+                    new ClaimsPrincipal(claimsIdentity),
+                    authProperties);
+
+                        return RedirectToAction("Index", "Home1");
+                    }
+
+                }
+                return View("Create");
+            
+           
         }
 
         // GET: Login/Edit/5
@@ -151,6 +189,12 @@ namespace ArciteatroVibo.Controllers
         private bool UtentiExists(int id)
         {
             return _context.Utentis.Any(e => e.IdUtente == id);
+        }
+
+
+        private bool VerifyPasswordHash(string password, string storedHash)
+        {
+            return BCrypt.Net.BCrypt.Verify(password, storedHash);
         }
     }
 }

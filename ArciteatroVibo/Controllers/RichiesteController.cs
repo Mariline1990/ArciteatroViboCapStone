@@ -48,6 +48,8 @@ namespace ArciteatroVibo.Controllers
 
         public IActionResult PartialForm()
         {
+
+
             return PartialView("_PartialForm");
         }
 

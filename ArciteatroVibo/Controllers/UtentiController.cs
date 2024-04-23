@@ -53,30 +53,25 @@ namespace ArciteatroVibo.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("IdUtente,Newsletter,Nome,Cognome,Email,Password,Ruolo")] Utenti utenti)
+        public async Task<IActionResult> Create([Bind("IdUtente,Newsletter,Nome,Cognome,Email,Password,Ruolo")] Utenti utente)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(utenti);
+              utente.Password = HashPassword(utente.Password);
+
+                _context.Add(utente);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(utenti);
+            return View(utente);
         }
 
-        [HttpGet]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Login([Bind("Email,Password,Ruolo")] Utenti utenti)
+        private string HashPassword(string password)
         {
-            if (ModelState.IsValid)
-            {
-                _context.Add(utenti);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-            }
-            return View(utenti);
+            return BCrypt.Net.BCrypt.HashPassword(password);
         }
 
+      
 
 
         // GET: Utenti/Edit/5

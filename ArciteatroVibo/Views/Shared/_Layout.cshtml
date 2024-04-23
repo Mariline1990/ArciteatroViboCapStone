@@ -1,4 +1,8 @@
-﻿<!DOCTYPE html>
+﻿@using System.Security.Claims
+
+
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -18,10 +22,32 @@
 </head>
 <body class="m-0">
     <header >
-        <div class="TopNavbar">
-            <h4 class="text-white ">Arci Teatro Popolare di <span class="boldfont ">Vibo Valentia</span> </h4>
+       
+            @if(User.IsInRole("Admin"))
+            {
+                <div class="TopNavbarAdmin">
+                    <h4 class="text-white ">Arci Teatro Popolare di <span class="boldfont ">Vibo Valentia</span> </h4>
+
+                </div>
+            }
+            else
+            {
+                <div class="TopNavbar">
+                    <h4 class="text-white ">Arci Teatro Popolare di <span class="boldfont ">Vibo Valentia</span> </h4>
+
+                </div>
+            }
+
+      
+        
+       @*  else
+        {
             
-        </div>
+            <div class="TopNavbarAdmin">
+                <h4 class="text-white ">Arci Teatro Popolare di <span class="boldfont ">Vibo Valentia</span> </h4>
+
+            </div>
+        } *@
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-0 py-0 border-bottom border-danger " id="navbarCustom">
             <div class="container-fluid">
               
@@ -30,9 +56,10 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between" >
+                    
                     <ul class="navbar-nav flex-grow-1 justify-content-center" >
                         <li class="me-0">
-                            <a class="nav-link" style="color:#9b1b1b" asp-area="" asp-controller="Utenti" style="display: inline" asp-action="Login">Login</a>
+                            <a class="nav-link" style="color:#9b1b1b" asp-area="" asp-controller="Login" style="display: inline" asp-action="Create">Login</a>
                             
                         </li>
                         <li class="mx-0 mt-2">
