@@ -2,6 +2,9 @@ using Microsoft.EntityFrameworkCore;
 using ArciteatroVibo.Models;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Identity;
+
+
+
 var builder = WebApplication.CreateBuilder(args);
 
 // aggiungo il dbcontext
@@ -9,10 +12,11 @@ builder.Services.AddDbContext<ArciteatroViboValentiaContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 
-//builder.Services.AddDefaultIdentity<IdentityUser>()
-//    .AddRoles() // Senza specificare alcun tipo all'interno delle parentesi angolari
-//    .AddEntityFrameworkStores<ArciteatroViboValentiaContext>();
-
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+    .AddCookie(option =>
+    {
+        option.LoginPath = "/Login/Create";
+    });
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();

@@ -4,29 +4,17 @@
     ViewData["Title"] = "Create";
 }
 
-<h1>Create</h1>
 
-<h4>Utenti</h4>
+
+
 <hr />
-<div class="row">
+<div class="container">
+<div class="row  container">
+        <h4 class="aragostaFont">Login</h4>
     <div class="col-md-4">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Newsletter" class="control-label"></label>
-                <input asp-for="Newsletter" class="form-control" />
-                <span asp-validation-for="Newsletter" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Nome" class="control-label"></label>
-                <input asp-for="Nome" class="form-control" />
-                <span asp-validation-for="Nome" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Cognome" class="control-label"></label>
-                <input asp-for="Cognome" class="form-control" />
-                <span asp-validation-for="Cognome" class="text-danger"></span>
-            </div>
+       
             <div class="form-group">
                 <label asp-for="Email" class="control-label"></label>
                 <input asp-for="Email" class="form-control" />
@@ -37,11 +25,7 @@
                 <input asp-for="Password" class="form-control" />
                 <span asp-validation-for="Password" class="text-danger"></span>
             </div>
-            <div class="form-group form-check">
-                <label class="form-check-label">
-                    <input class="form-check-input" asp-for="Ruolo" /> @Html.DisplayNameFor(model => model.Ruolo)
-                </label>
-            </div>
+            
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>
@@ -51,6 +35,7 @@
 
 <div>
     <a asp-action="Index">Back to List</a>
+</div>
 </div>
 
 @section Scripts {
