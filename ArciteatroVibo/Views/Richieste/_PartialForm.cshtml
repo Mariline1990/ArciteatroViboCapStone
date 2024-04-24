@@ -8,9 +8,9 @@
 <h5 class="aragostaFont">La tua iscrizione</h5>
 <hr />
 <div class="row">
-    <div class="col-md-12" mb-5>
+    <div class="col-md-11" mb-5>
         <form asp-action="Create" enctype="multipart/form-data">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div asp-validation-summary ="None" class="text-danger">  </div>
             <div class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="Nome" class="control-label"></label>
@@ -18,9 +18,9 @@
                 <span asp-validation-for="Nome" class="text-danger"></span>
             </div>
 
-            <div class="form-group">
+            <div class="form-group" >
                 <label asp-for="Cognome" class="control-label"></label>
-                <input asp-for="Cognome" class="form-control" />
+                <input asp-for="Cognome" class="form-control aragostaFont" form-control-lg" id="colFormLabelLg"  />
                 <span asp-validation-for="Cognome" class="text-danger"></span>
             </div>
             <div class="form-group">
