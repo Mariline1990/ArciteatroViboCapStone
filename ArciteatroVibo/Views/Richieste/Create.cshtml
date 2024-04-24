@@ -8,29 +8,29 @@
 
 <h5 class="aragostaFont">La tua iscrizione</h5>
 <hr />
-<div class="row">
-    <div class="col-md-12" mb-5>
+<div class="row justify-content-center">
+    <div class="col-md-5" mb-5>
         <form asp-action="Create" enctype="multipart/form-data">
             <div  class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="Nome" class="control-label"></label>
-                <input asp-for="Nome" class="form-control" />
+                <label asp-for="Nome" class="control-label" ></label>
+                <input asp-for="Nome" class="form-control" readonly />
                 <span asp-validation-for="Nome" class="text-danger"></span>
             </div>
            
             <div class="form-group">
-                <label asp-for="Cognome" class="control-label"></label>
-                <input asp-for="Cognome" class="form-control" />
+                <label asp-for="Cognome" class="control-label">Cognome</label>
+                <input asp-for="Cognome" class="form-control" form-control-lg" id="colFormLabelLg" placeholder="Cognome" readonly  />
                 <span asp-validation-for="Cognome" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="DataNascita" class="control-label"></label>
-                <input asp-for="DataNascita" class="form-control" />
+                <input asp-for="DataNascita" class="form-control" readonly />
                 <span asp-validation-for="DataNascita" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="CorpoRichiesta" class="control-label"></label>
-                <textarea asp-for="CorpoRichiesta" class="form-control" style="height: 200px"></textarea>
+                <textarea asp-for="CorpoRichiesta" class="form-control" style="height: 200px" readonly></textarea>
                 <span asp-validation-for="CorpoRichiesta" class="text-danger"></span>
             </div>
             <div class="form-group ">         
@@ -40,14 +40,14 @@
                 <input asp-for="FkLaboratorio" class="form-control" value="@ViewBag.Laboratorio"  />
             </div>
             <div class="form-group my-5 text-end">
-                <input type="submit" value="Create" class="pinkButtonSmall " />
+                <input type="submit" value="Confermi?" class="pinkButtonSmall " />
             </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index"></a>
 </div>
 
 @section Scripts {
