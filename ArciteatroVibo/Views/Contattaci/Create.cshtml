@@ -1,4 +1,4 @@
-﻿@model ArciteatroVibo.Models.Contattaci
+﻿@* @model ArciteatroVibo.Models.Contattaci
 
 
 
@@ -10,6 +10,9 @@
     <div class="col-md-8">
         <form asp-action="PartialForm">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div>
+                    <partial name="Email/Email.cshtml" />
+            </div>
             <div class="form-group">
                 <label asp-for="Titolo" class="control-label"></label>
                 <input asp-for="Titolo" class="form-control" />
@@ -39,3 +42,4 @@
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
+ *@
