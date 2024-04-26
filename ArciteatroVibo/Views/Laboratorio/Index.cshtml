@@ -22,16 +22,11 @@
                         {
                             <span class="badge bg-dark  position-absolute top-0 start-100 translate-middle">
                                 
-                                   ancora @Html.DisplayFor(modelItem => item.PostiLiberi) posti
+                                    @Html.DisplayFor(modelItem => item.PostiLiberi) posti
                                 
                             </span>
                         }
-                        else
-                        {
-                            <span class=" badgeOff ">
-                               posti esauriti
-                            </span>
-                        }
+                   
                         <h4 class=""> @Html.DisplayFor(modelItem => item.Titolo)</h4>
                         <p>
                             @Html.DisplayFor(modelItem => item.Testo)

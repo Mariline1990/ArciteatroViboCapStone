@@ -10,8 +10,13 @@
     <h4 class="text-center">
         @Html.DisplayFor(model => model.Titolo)
     </h4>
-    <p class="text-center my-5">@Html.DisplayFor(model => model.Testo2)</p>
-    <h2 class="badge aragostaFont bg-light"> Posti rimanenti @ViewBag.postiRimanenti </h2>
+ 
+
+    @if (@ViewBag.postiRimanenti > 0)
+    {
+
+        <p class="text-center my-5">@Html.DisplayFor(model => model.Testo2)</p>
+        <h4 class=" aragostaFont bg-light text-center"> Posti rimanenti @ViewBag.postiRimanenti </h4>
     <div class="row container justify-content-between g-0 my-5">
         <div class="col-6 flexCard  justify-content-around">
 
@@ -50,7 +55,52 @@
          
         </div>
     </div>
+    }
+    else
+    {
+        <h4 class=" aragostaFont bg-light text-center"> Iscrizioni chiuse </h4>
+        <p class="text-center my-5">@Html.DisplayFor(model => model.Testo2)</p>
+      
+        <div class="row container justify-content-between g-0 my-5">
+            <div class="col-6 flexCard  justify-content-around">
 
+                <div class="row position-relative justify-content-between">
+                    <img src="/immagini/orologioRosa.jpg" class="position-absolute card-img-small top-30 " style="z-index:0; filter: grayscale(30%);opacity:30%;filter: contrast(90%);  border-block:5px solid white " alt="Alternate Text" />
+                    <div class="col-4 ms-5" style="z-index:1">
+                        <p class="fw-bold mt-5">
+                            Data inizio
+                        </p>
+                        <p>
+                            @Html.DisplayFor(model => model.DataInizio)
+                        </p>
+                    </div>
+                    <div class="col-4" style="z-index:1">
+                        <p class="fw-bold mt-5">
+                            Data fine
+                        </p>
+                        <p>
+                            @Html.DisplayFor(model => model.DataFine)
+                        </p>
+                    </div>
+
+                </div>
+                <div class=" row mt-5 ms-5" style="z-index:1">
+                    <div class="col-8">
+                        <p class="fw-bold mt-5">
+                            E-mail
+                        </p>
+                        <p>
+                            @Html.DisplayFor(model => model.EMail)
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6" >
+                <img src="~/immagini/iStock-1726348407 1IscrizioneChiusa.jpg" alt="Alternate Text" style="filter: opacity(80%)" class="d-block m-3 p-5 card-img-small " />
+           </div>
+            </div>
+      
+    }
     @section scripts {
 
         <script>

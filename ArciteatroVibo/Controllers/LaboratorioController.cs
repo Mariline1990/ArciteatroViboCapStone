@@ -25,9 +25,6 @@ namespace ArciteatroVibo.Controllers
         // GET: Laboratorio
         public async Task<IActionResult> Index()
         {
-         
-           
-
             return View(await _context.Laboratorios.ToListAsync());
         }
 
