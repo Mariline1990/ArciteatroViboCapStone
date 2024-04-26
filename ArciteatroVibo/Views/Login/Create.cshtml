@@ -18,9 +18,9 @@
 
         </div>
     <div class="col-md-4 me-5">
-            @if (ViewBag.Message != null)
+            @if (ViewBag.Error != null)
             {
-                <p>@ViewBag.Message</p>
+                <p class="bg-black p-2 text-white">@ViewBag.Error</p>
             }
         
         <form asp-action="Create">
@@ -31,7 +31,9 @@
                 <input asp-for="Email" class="form-control" />
                 <span asp-validation-for="Email" class="text-danger"></span>
             </div>
+               
             <div class="form-group">
+                   
                 <label asp-for="Password" class="control-label"></label>
                 <input asp-for="Password" class="form-control" />
                 <span asp-validation-for="Password" class="text-danger"></span>

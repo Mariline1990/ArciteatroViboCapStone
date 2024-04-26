@@ -93,6 +93,7 @@ namespace ArciteatroVibo.Controllers
                 }
 
             }
+             ViewBag.Error = "Email o Password errati";
             return View("Create");
 
 
