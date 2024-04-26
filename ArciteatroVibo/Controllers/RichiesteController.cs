@@ -100,7 +100,7 @@ namespace ArciteatroVibo.Controllers
 
                 _context.Add(richieste);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Index","Laboratorio");
             }
             
             return View(richieste);
