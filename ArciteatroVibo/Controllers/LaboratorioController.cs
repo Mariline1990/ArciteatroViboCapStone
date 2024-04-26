@@ -25,6 +25,9 @@ namespace ArciteatroVibo.Controllers
         // GET: Laboratorio
         public async Task<IActionResult> Index()
         {
+         
+           
+
             return View(await _context.Laboratorios.ToListAsync());
         }
 
@@ -33,8 +36,15 @@ namespace ArciteatroVibo.Controllers
         {
             if (id == null)
             {
+              
+
                 return NotFound();
             }
+
+            int postiPrenotati = _context.Richiestes.Where(r => r.FkLaboratorio == id).Count();
+            int PostiRimanenti = _context.Laboratorios.Where(l => l.IdLaboratorio == id).Select(l => l.PostiLiberi).FirstOrDefault() - postiPrenotati;
+            ViewBag.postiRimanenti = PostiRimanenti;
+            TempData["postiRimanenti"] = PostiRimanenti;
 
             var laboratorio = await _context.Laboratorios
                 .FirstOrDefaultAsync(m => m.IdLaboratorio == id);

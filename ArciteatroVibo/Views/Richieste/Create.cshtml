@@ -6,41 +6,52 @@
     ViewData["Title"] = "Create";
 }
 
-<h5 class="aragostaFont">La tua iscrizione</h5>
+
 <hr />
 <div class="row justify-content-center">
     <div class="col-md-5" mb-5>
+        <h5 class="aragostaFont">Acconsenti al trattamento dei dati?</h5>
+        <textarea class="form-control  bg-white" style="height: 200px; font-family:Verdana" readonly>
+
+Finalità del Trattamento dei Dati:
+I dati personali forniti verranno utilizzati esclusivamente per l'iscrizione al laboratorio organizzato dall'Associazione ARCI e per comunicazioni correlate riguardanti l'evento.
+Conservazione dei Dati:
+I dati personali saranno conservati per il tempo necessario per adempiere alle finalità indicate o per il periodo richiesto dalla legge. Tutte le misure necessarie saranno adottate per garantire la sicurezza e la protezione dei dati durante il periodo di conservazione.
+Consenso Esplicito:
+Con l'invio del modulo di iscrizione, dichiaro di fornire il mio consenso esplicito al trattamento dei dati personali forniti per le finalità indicate nei presenti termini.
+
+</textarea>
         <form asp-action="Create" enctype="multipart/form-data">
-            <div  class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Nome" class="control-label" ></label>
+            <div class="text-danger"></div>
+            <div class="form-group" hidden>
+                <label asp-for="Nome" class="control-label"></label>
                 <input asp-for="Nome" class="form-control" readonly />
                 <span asp-validation-for="Nome" class="text-danger"></span>
             </div>
-           
-            <div class="form-group">
+
+            <div class="form-group" hidden>
                 <label asp-for="Cognome" class="control-label">Cognome</label>
-                <input asp-for="Cognome" class="form-control" form-control-lg" id="colFormLabelLg" placeholder="Cognome" readonly  />
+                <input asp-for="Cognome" class="form-control" form-control-lg" id="colFormLabelLg" placeholder="Cognome" readonly />
                 <span asp-validation-for="Cognome" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            <div class="form-group" hidden>
                 <label asp-for="DataNascita" class="control-label"></label>
                 <input asp-for="DataNascita" class="form-control" readonly />
                 <span asp-validation-for="DataNascita" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            <div class="form-group" hidden>
                 <label asp-for="CorpoRichiesta" class="control-label"></label>
                 <textarea asp-for="CorpoRichiesta" class="form-control" style="height: 200px" readonly></textarea>
                 <span asp-validation-for="CorpoRichiesta" class="text-danger"></span>
             </div>
-            <div class="form-group ">         
-                <input asp-for="FkUtente" class="form-control" value="@ViewBag.Utente" hidden/>       
+            <div class="form-group ">
+                <input asp-for="FkUtente" class="form-control" value="@ViewBag.Utente" hidden />
             </div>
-            <div class="form-group">               
-                <input asp-for="FkLaboratorio" class="form-control" value="@ViewBag.Laboratorio"  />
+            <div class="form-group">
+                <input asp-for="FkLaboratorio" class="form-control" value="@ViewBag.Laboratorio" hidden />
             </div>
             <div class="form-group my-5 text-end">
-                <input type="submit" value="Confermi?" class="pinkButtonSmall " />
+                <input type="submit" value="Acconsento" class="pinkButtonSmall " />
             </div>
         </form>
     </div>
@@ -51,5 +62,7 @@
 </div>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }
