@@ -12,6 +12,11 @@
 <div class="row  container">
         <h4 class="aragostaFont">Login</h4>
     <div class="col-md-4">
+            @if (ViewBag.Message != null)
+            {
+                <p>@ViewBag.Message</p>
+            }
+        
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
        

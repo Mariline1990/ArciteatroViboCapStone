@@ -20,4 +20,9 @@ public partial class Utenti
     public bool Ruolo { get; set; }
 
     public virtual ICollection<Richieste> Richiestes { get; set; } = new List<Richieste>();
+
+    public static implicit operator Utenti(int v)
+    {
+        throw new NotImplementedException();
+    }
 }
