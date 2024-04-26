@@ -8,25 +8,23 @@
 
 <div class="container">
     <div class="row">
-        <div class="col-6">
-            @foreach(var item in Model)
+         @foreach(var item in Model)
             {
-                <p>
-                    @Html.DisplayFor(modelitem => item.Telefono1)
-                </p>
-                <p>
-                    @Html.DisplayFor(modelitem => item.Telefono2)
-                </p>
-                <p>
-                    @Html.DisplayFor(modelitem => item.Sede)
-                </p>
-            }
+        <div class="col-6">
 
+                <p>@Html.DisplayFor(modelitem => item.Sede)</p>
+                <p>@Html.DisplayFor(modelitem => item.Email)</p>
+                <p>@Html.DisplayFor(modelitem => item.Telefono1)</p>
+                <p>@Html.DisplayFor(modelitem => item.Telefono2)</p>
+                <p>@Html.DisplayFor(modelitem => item.Pec)</p>
+
+                    
+              
           
         </div>
-        <div class="col-6">
-            <partial name="Email/Email.cshtml" model="@Model" />
-        </div>
+           
+        }
+       
     </div>
 </div>
 

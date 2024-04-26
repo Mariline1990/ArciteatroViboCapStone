@@ -58,6 +58,8 @@ namespace ArciteatroVibo.Controllers
         public IActionResult PartialForm(int?id)
         {
           
+            
+
                 ViewBag.Laboratorio = id;
 
             TempData["Laboratorio"] = id;
@@ -90,7 +92,7 @@ namespace ArciteatroVibo.Controllers
            var utente = _context.Utentis.FirstOrDefault(u => u.IdUtente == int.Parse(userId));   
            ViewBag.Utente = utente.IdUtente; // Accedi all'ID dell'utente
 
-   
+      
 
             if (ModelState.IsValid)
             {

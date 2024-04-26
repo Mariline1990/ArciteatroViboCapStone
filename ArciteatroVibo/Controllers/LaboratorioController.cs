@@ -54,10 +54,11 @@ namespace ArciteatroVibo.Controllers
             if (laboratorio == null)
             {
                 return NotFound();
+
             } else if(userId == null)
             {
            
-                TempData["laboratorio"] = true;
+               
                 return RedirectToAction("Create", "Login");
 
                 

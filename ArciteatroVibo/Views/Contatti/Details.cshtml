@@ -4,45 +4,30 @@
     ViewData["Title"] = "Details";
 }
 
-<h1>Details</h1>
 
-<div>
-    <h4>Contatti</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Sede)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Sede)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Telefono1)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Telefono1)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Telefono2)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Telefono2)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Email)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Email)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Pec)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Pec)
-        </dd>
-    </dl>
-</div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model?.IdContatto">Edit</a> |
-    <a asp-action="Index">Back to List</a>
-</div>
+
+<div class="container">
+    <h4 class="titlePage ms-3" style="text-align:left">Contatti</h4>
+    <div class="row container">
+        <div class="col-6">
+            <img src="/immagini/ViboValentia.jpg" class="card-img-normal d-block" alt="Alternate Text" />
+        </div>
+        <div class="col-6">
+            <h5>  @Html.DisplayFor(model => model.Sede)</h5>
+            <h5>  @Html.DisplayFor(model => model.Email)</h5>
+            <h5>  @Html.DisplayFor(model => model.Telefono1)</h5>
+            <h5>  @Html.DisplayFor(model => model.Telefono2)</h5>
+            <h5>  @Html.DisplayFor(model => model.Pec)</h5>
+
+            <a href="mailto:@Html.DisplayFor(model => model.Email)" class="aragostaFont">Clicca qui per scriverci!</a>
+        </div>
+    </div>
+    @if(User.IsInRole("Admin"))
+    {
+        <div>
+            <a asp-action="Edit" asp-route-id="@Model?.IdContatto">Edit</a> |
+            <a asp-action="Index">Back to List</a>
+        </div>
+    }
+    
+    
