@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using ArciteatroVibo.Models;
 using Microsoft.AspNetCore.Hosting;
+using System.Security.Claims;
 
 
 namespace ArciteatroVibo.Controllers
@@ -38,6 +39,7 @@ namespace ArciteatroVibo.Controllers
                 return NotFound();
             }
 
+
             int postiPrenotati = _context.Richiestes.Where(r => r.FkLaboratorio == id).Count();
             int PostiRimanenti = _context.Laboratorios.Where(l => l.IdLaboratorio == id).Select(l => l.PostiLiberi).FirstOrDefault() - postiPrenotati;
             ViewBag.postiRimanenti = PostiRimanenti;
@@ -45,9 +47,21 @@ namespace ArciteatroVibo.Controllers
 
             var laboratorio = await _context.Laboratorios
                 .FirstOrDefaultAsync(m => m.IdLaboratorio == id);
+
+            var userId = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+
+
             if (laboratorio == null)
             {
                 return NotFound();
+            } else if(userId == null)
+            {
+           
+                TempData["laboratorio"] = true;
+                return RedirectToAction("Create", "Login");
+
+                
+
             }
 
             return View(laboratorio);

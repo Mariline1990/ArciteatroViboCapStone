@@ -29,6 +29,7 @@ namespace ArciteatroVibo.Controllers
         // GET: Richieste
         public async Task<IActionResult> Index()
         {
+
             var arciteatroViboValentiaContext = _context.Richiestes.Include(r => r.FkLaboratorioNavigation).Include(r => r.FkUtenteNavigation);
             return View(await arciteatroViboValentiaContext.ToListAsync());
         }

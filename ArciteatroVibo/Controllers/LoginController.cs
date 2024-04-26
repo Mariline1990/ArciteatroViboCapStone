@@ -52,17 +52,19 @@ namespace ArciteatroVibo.Controllers
             return View();
         }
 
-     
 
 
 
-                // POST: Login/Create
-                // To protect from overposting attacks, enable the specific properties you want to bind to.
-                // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-                [HttpPost]
+
+        // POST: Login/Create
+        // To protect from overposting attacks, enable the specific properties you want to bind to.
+        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(Utenti utenti)
         {
+
+          
             if (!string.IsNullOrEmpty(utenti.Email) && !string.IsNullOrEmpty(utenti.Password))
             {
                 var user = _context.Utentis.FirstOrDefault(u => u.Email == utenti.Email);
@@ -83,7 +85,6 @@ namespace ArciteatroVibo.Controllers
                     var authProperties = new AuthenticationProperties();
 
                 await HttpContext.SignInAsync( CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(claimsIdentity),authProperties);
-
                     return RedirectToAction("Index", "Home1");
                 }
 
