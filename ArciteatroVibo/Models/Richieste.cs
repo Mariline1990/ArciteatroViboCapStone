@@ -8,9 +8,9 @@ public partial class Richieste
 {
     public int IdRichiesta { get; set; }
 
-    [Required(ErrorMessage = "Il Nome è obbligatorio.")]
+   
     public string Nome { get; set; } = null!;
-    [Required(ErrorMessage = "Il Cognome è obbligatorio.")]
+    
     public string Cognome { get; set; } = null!;
 
     [Display(Name = "Raccontaci di più")]
@@ -20,7 +20,7 @@ public partial class Richieste
 
     public int FkLaboratorio { get; set; }
 
-    [Required(ErrorMessage = "Il Cognome è obbligatorio.")]
+   
     [DataType(DataType.Date)]
     [DisplayFormat(DataFormatString = "{0:dd.MM.yyyy}", ApplyFormatInEditMode = true)]
     [Display(Name = "Data di Nascita")]
