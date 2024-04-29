@@ -4,72 +4,96 @@
     ViewData["Title"] = "Edit";
 }
 
-<h1>Edit</h1>
 
-<h4>Home1</h4>
-<hr />
 <div class="row justify-content-center  ">
    
+  
     <div class="col-md-7 ">
+        <div class="  mt-5 alert alert-warning alert-dismissible fade show" role="alert">
+            <strong>Attenzione!</strong> Nel form sono presenti solo elementi di Upload pertanto non sarà possibile apportare modifiche ad un singolo elemento. Proseguire solo se si hanno tutto il materiale a disposizione.
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+
         <form asp-action="Edit" enctype="multipart/form-data">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="IdHome1" />
+            <h4 class="titlePage" >Modificala Home</h4>
+
             <div class="container border border-danger">
-            <div class="row container justify-content-between m-2 ">
-                <h4 class="aragostaFont ">Carosello</h4>
-                <div class="col-4">
-            <div class="form-group">
-                <label asp-for="Foto1" class="control-label"></label>
+                <div class="row container justify-content-between m-2  pt-5">
+                    <h3 class="aragostaFont ">Carosello</h3>
+                    <p class="aragostaFont">Modifica il carosello, le tre immagini che scorrono in alto</p>
+                    <div class="col-4">
+                        <div class="form-group">
+                            <label asp-for="Foto1" class="control-label"></label>
                             <input asp-for="updateimm" class="form-control" type="file" />
                             <span asp-validation-for="Foto1" class="text-danger"></span>
-            </div>
-                </div>
-                <div class="col-5 position-relative">
-                    <img style="width:200px" src="@Model.Foto1" class="img-thumbnail" alt="...">
-                    <img src="~/immagini/arrow.png" alt="Alternate Text" class="position-absolute" style="width:30px; max-height:200px; top:120px" />
-                </div>
-            </div>
-            <div class="row container justify-content-between m-2">
-                <div class="col-4">
-                    <div class="form-group">
-                        <label asp-for="Foto2" class="control-label"></label>
-                        <input asp-for="updateimmDue" class="form-control" type="file" />
-                        <span asp-validation-for="Foto2" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-5 position-relative">
+                        <img style="width:200px" src="@Model.Foto1" class="img-thumbnail" alt="...">
+                        <img src="~/immagini/arrow.png" alt="Alternate Text" class="position-absolute" style="width:30px; max-height:200px; top:120px" />
                     </div>
                 </div>
-                <div class="col-5">
-                    <img style="width:200px" src="@Model.Foto2" class="img-thumbnail" alt="...">
-                </div>
-            </div>
-            <div class="row container justify-content-between m-2">
-                <div class="col-4">
-                    <div class="form-group">
-                        <label asp-for="Foto3" class="control-label"></label>
-                        <input asp-for="updateimmTre" class="form-control" type="file" />
-                        <span asp-validation-for="Foto3" class="text-danger"></span>
+                <div class="row container justify-content-between m-2">
+                    <div class="col-4">
+                        <div class="form-group">
+                            <label asp-for="Foto2" class="control-label"></label>
+                            <input asp-for="updateimmDue" class="form-control" type="file" />
+                            <span asp-validation-for="Foto2" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-5">
+                        <img style="width:200px" src="@Model.Foto2" class="img-thumbnail" alt="...">
                     </div>
                 </div>
-                <div class="col-5">
-                    <img style="width:200px" src="@Model.Foto3" class="img-thumbnail" alt="...">
-                </div>
-                </div>
-            </div>
-            <div class="row container justify-content-between m-2">
-                <div class="col-4">
-                    <div class="form-group">
-                        <label asp-for="Upload" class="control-label"></label>
-                        <input asp-for="UploadUp" class="form-control" type="file"> 
-                        <span asp-validation-for="Upload" class="text-danger"></span>
+                <div class="row container justify-content-between m-2">
+                    <div class="col-4">
+                        <div class="form-group">
+                            <label asp-for="Foto3" class="control-label"></label>
+                            <input asp-for="updateimmTre" class="form-control" type="file" />
+                            <span asp-validation-for="Foto3" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-5 pb-5">
+                        <img style="width:200px" src="@Model.Foto3" class="img-thumbnail" alt="...">
                     </div>
                 </div>
-                <div class="col-5">
-                    <h3>File Statuto, cambialo solo se necessario <span class="aragostaFont">@Model.Upload</span> </h3>
+            </div>
+            <div class="container border border-danger my-3 ">
+                <h3 class="aragostaFont">Statuto</h3>
+                <div class="row container justify-content-between m-2">
+                    <div class="col-4">
+                        <div class="form-group">
+                            
+                            <input asp-for="UploadUp" class="form-control" type="file">
+                            <span asp-validation-for="Upload" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-5">
+                        <h3> Cambialo, oppure ricarica il file originale <span class="aragostaFont">@Model.Upload</span> </h3>
+                    </div>
                 </div>
             </div>
-            <div class="form-group">
-                <label asp-for="Video" class="control-label"></label>
-                <input asp-for="Uploadvideo" class="form-control" type="file" />
-                <span asp-validation-for="Video" class="text-danger"></span>
+            <div class="container border border-danger ">
+                <h3 class="aragostaFont">Video</h3>
+                <div class="row container justify-content-between m-2">
+                    <div class="col-4">
+                        <div class="form-group">
+                            
+                            <input asp-for="Uploadvideo" class="form-control" type="file" />
+                            <span asp-validation-for="Video" class="text-danger"></span>
+                        </div>
+                    </div>
+                  
+                        <div class="col-5">
+                        <h3> Il video che stai cambiando  </h3>
+                        <div> <video width="320" class="m-2" height="200" controls="true" src="@Url.Content("~/immagini/video/"+ @Model.Video)"> </div>
+                          
+                        </div>
+                   
+
+                </div>
             </div>
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />
@@ -83,5 +107,7 @@
 </div>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }

@@ -4,29 +4,37 @@
     ViewData["Title"] = "Edit";
 }
 
-<h1>Edit</h1>
+<div class=" container">
+    <h4 class="titlePage ">Modifica la Card</h4>
+    
 
-<h4>Card</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Edit">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="IdCard" />
-            <div class="form-group">
-                <label asp-for="Foto" class="control-label"></label>
-                <input asp-for="Foto" class="form-control" />
-                <span asp-validation-for="Foto" class="text-danger"></span>
+    <hr />
+    <div class="row container  border border-danger justify-content-between m-5 p-5">
+        <div class="col-md-6 ">
+
+            <h4 class="aragostaFont m-3">Card</h4>
+            <form asp-action="Edit" enctype="multipart/form-data">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="IdCard" />
+                <div class="form-group">
+                    <label asp-for="Foto" class="control-label"></label>
+                    <input asp-for="FotoCard" class="form-control" type="file" />
+                    <span asp-validation-for="Foto" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Titolo" class="control-label"></label>
+                    <input asp-for="Titolo" class="form-control" />
+                    <span asp-validation-for="Titolo" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Save" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+        <div class="col-md-5 ">
+            <h4>  Qui puoi modificare l'immagine ed il titolo della Card. <br /> Ricordati che questa Card porterà sempre a <span class="aragostaFont">@Model.Titolo</span> <br/> Es:</h4>
+            <img src="/immagini/card.jpg" class="img-fluid" alt="Alternate Text" />
             </div>
-            <div class="form-group">
-                <label asp-for="Titolo" class="control-label"></label>
-                <input asp-for="Titolo" class="form-control" />
-                <span asp-validation-for="Titolo" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
-            </div>
-        </form>
     </div>
 </div>
 
@@ -35,5 +43,7 @@
 </div>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }

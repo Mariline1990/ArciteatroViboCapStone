@@ -114,31 +114,36 @@ namespace ArciteatroVibo.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("IdCard,Foto,Titolo")] Card card)
+        public async Task<IActionResult> Edit(int id, [Bind("IdCard,Foto,Titolo,Link,FotoCard")] Card card)
         {
+
+
+            ModelState.Remove("Foto");
             if (id != card.IdCard)
             {
                 return NotFound();
             }
 
+ 
+
             if (ModelState.IsValid)
             {
-                try
+                if (card.FotoCard != null && card.FotoCard.Length > 0)
                 {
-                    _context.Update(card);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!CardExists(card.IdCard))
+                    var path = Path.Combine(_hostingEnvironment.WebRootPath, "immagini", card.FotoCard.FileName);
+
+
+
+                    using (var Filestream = new FileStream(path, FileMode.Create))
                     {
-                        return NotFound();
+                        await card.FotoCard.CopyToAsync(Filestream);
                     }
-                    else
-                    {
-                        throw;
-                    }
+
+                    card.Foto = "/immagini/" + card.FotoCard.FileName;
                 }
+
+                _context.Update(card);
+                await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
             return View(card);

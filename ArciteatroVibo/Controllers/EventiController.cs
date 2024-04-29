@@ -60,6 +60,28 @@ namespace ArciteatroVibo.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("IdEvento,Titolo,Sottotitolo,Data,Luogo,InCorso,Testo,Locandina,LocandinaUp")] Eventi eventi)
         {
+            string oggiFormattato = DateTime.Now.ToString("MM/dd/yyyy");
+
+            // Non è necessario creare un nuovo oggetto DateTime se eventi.Data è già un DateTime valido
+            DateTime theDay = new DateTime(eventi.Data?.Year ?? 1, eventi.Data?.Month ?? 1, eventi.Data?.Day ?? 1);
+
+
+            // Confronto delle date
+            int compareValue = theDay.Date.CompareTo(DateTime.Today);
+
+            if (compareValue == 0)
+            {
+                eventi.InCorso = true;
+            }
+            else if (compareValue < 0)
+            {
+                eventi.InCorso = false;
+            }
+            else
+            {
+                eventi.InCorso = true;
+            }
+
             if (ModelState.IsValid)
             {
                 if (eventi.LocandinaUp != null && eventi.LocandinaUp.Length > 0)
@@ -73,10 +95,12 @@ namespace ArciteatroVibo.Controllers
 
                     eventi.Locandina = "/immagini/Locandine/" + eventi.LocandinaUp.FileName;
                 }
+               
                     _context.Add(eventi);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+
             return View(eventi);
         }
 

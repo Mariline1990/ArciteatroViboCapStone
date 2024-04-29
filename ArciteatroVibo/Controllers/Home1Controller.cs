@@ -20,6 +20,7 @@ namespace ArciteatroVibo.Controllers
         // GET: Home1
         public async Task<IActionResult> Index()
         {
+            TempData["Home1"] = "Ci sono riuscita";
             return View(await _context.Home1s.ToListAsync());
         }
 
@@ -208,6 +209,11 @@ namespace ArciteatroVibo.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("IdHome1,Foto2,Foto3,Upload,Video,updateimm, updateimmDue, updateimmTre,UploadUp,Uploadvideo")] Home1 home1)
         {
+
+            var successMessage = TempData["Home1"] as string;
+
+            ViewBag.SuccessMessage = successMessage;
+
             ModelState.Remove("Foto1");
 
             if (id != home1.IdHome1)

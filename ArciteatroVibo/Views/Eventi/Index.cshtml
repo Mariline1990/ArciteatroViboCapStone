@@ -8,6 +8,7 @@
 </div>
 
 @* uso model reverse per riordinare gli elementi nel foreach dall'ultimo al primo *@
+<div class="m-5 text-center">  <a asp-action="Create"> <img src="~/immagini/NuovoEvento.png" width="200px" alt="Alternate Text" /></a></div>
 @foreach (var item in Model.Reverse())
     {
     <div class="container-fluid eventiColor ">
@@ -61,6 +62,9 @@
                 </div>
 
 
+                    <a asp-action="Delete" asp-route-id="@item.IdEvento"> <img src="~/immagini/Elimina.png" width="200px" alt="Alternate Text" id="liveAlertBtn" /></a>
+
+                    <a asp-action="Edit" asp-route-id="@item.IdEvento"> <img src="~/immagini/Modifica.png" width="200px" alt="Alternate Text" id="liveAlertBtn" /></a>
 
 
             </div>
@@ -70,9 +74,5 @@
     }
 
 
-@* 
- <a asp-action="Edit" asp-route-id="@item.IdEvento">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.IdEvento">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.IdEvento">Delete</a>
 
- *@
+

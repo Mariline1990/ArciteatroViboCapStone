@@ -4,70 +4,99 @@
     ViewData["Title"] = "Create";
 }
 
-<h1>Create</h1>
 
-<h4>Commedie</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
+<div class="row justify-content-center  ">
+
+
+    <div class="col-md-7 ">
+        <h1>Create</h1>
+
+        <h4>Commedie</h4>
+        <hr />
         <form asp-action="Create" enctype="multipart/form-data">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Titolo" class="control-label"></label>
-                <input asp-for="Titolo" class="form-control" />
-                <span asp-validation-for="Titolo" class="text-danger"></span>
+
+
+
+            <div class="row justify-content-between border border-danger my-5 p-5">
+               
+                <div class="col-md-4">
+                    <h3 class="aragostaFont">Home Commedie</h3>
+
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <label asp-for="Titolo" class="control-label"></label>
+                        <input asp-for="Titolo" class="form-control" />
+                        <span asp-validation-for="Titolo" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Autore" class="control-label"></label>
+                        <input asp-for="Autore" class="form-control" />
+                        <span asp-validation-for="Autore" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Trama" class="control-label"></label>
+                        <input asp-for="Trama" class="form-control" />
+                        <span asp-validation-for="Trama" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <h4 class="aragostaFont">Puoi aggiungere anche solo la Home di Commedie ed aggiungere successivamente i dettagli</h4>
+                    <img src="~/immagini/EsempioArrow.png" class="img-fluid" alt="Alternate Text" />
+                </div>
             </div>
-            <div class="form-group">
-                <label asp-for="Autore" class="control-label"></label>
-                <input asp-for="Autore" class="form-control" />
-                <span asp-validation-for="Autore" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Trama" class="control-label"></label>
-                <input asp-for="Trama" class="form-control" />
-                <span asp-validation-for="Trama" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Regia" class="control-label"></label>
-                <input asp-for="Regia" class="form-control" />
-                <span asp-validation-for="Regia" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Interpreti" class="control-label"></label>
-                <input asp-for="Interpreti" class="form-control" />
-                <span asp-validation-for="Interpreti" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Locandina" class="control-label"></label>
-                <input asp-for="LocandinaUp" class="form-control" type="File" />
-                <span asp-validation-for="Locandina" class="text-danger"></span>
-            </div>
-          
-           
-            <div class="form-group">
-                <label asp-for="Extra" class="control-label"></label>
-                <input asp-for="Extra" class="form-control" />
-                <span asp-validation-for="Extra" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Foto1" class="control-label"></label>
-                <input asp-for="Foto1Up" class="form-control" type="File" />
-                <span asp-validation-for="Foto1" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Foto2" class="control-label"></label>
-                <input asp-for="Foto2Up" class="form-control" type="File" />
-                <span asp-validation-for="Foto2" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Foto3" class="control-label"></label>
-                <input asp-for="Foto3Up" class="form-control" type="File" />
-                <span asp-validation-for="Foto2" class="text-danger"></span>
+            <div class="row justify-content-between border border-danger  my-3 p-5">
+                 
+                 <div class="col-md-4">
+                    <h3 class="aragostaFont">Dettagli Commedie</h3>
+                   
+                    <div class="form-group">
+                        <label asp-for="Regia" class="control-label"></label>
+                        <input asp-for="Regia" class="form-control" />
+                        <span asp-validation-for="Regia" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Interpreti" class="control-label"></label>
+                        <input asp-for="Interpreti" class="form-control" />
+                        <span asp-validation-for="Interpreti" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Locandina" class="control-label"></label>
+                        <input asp-for="LocandinaUp" class="form-control" type="File" />
+                        <span asp-validation-for="Locandina" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Extra" class="control-label"></label>
+                        <input asp-for="Extra" class="form-control" />
+                        <span asp-validation-for="Extra" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Foto1" class="control-label"></label>
+                        <input asp-for="Foto1Up" class="form-control" type="File" />
+                        <span asp-validation-for="Foto1" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Foto2" class="control-label"></label>
+                        <input asp-for="Foto2Up" class="form-control" type="File" />
+                        <span asp-validation-for="Foto2" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Foto3" class="control-label"></label>
+                        <input asp-for="Foto3Up" class="form-control" type="File" />
+                        <span asp-validation-for="Foto2" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-8">
+
+                    <img src="~/immagini/EsempioCommedia.png" class="img-fluid" alt="Alternate Text" />
+                    <p class=" fw-bolder mt-2  ms-5 text-decoration-underline">Ricordati sempre di separare gli interpreti con una virgola!</p>
+
+                </div>
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>
         </form>
+
     </div>
 </div>
 
@@ -76,5 +105,7 @@
 </div>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }

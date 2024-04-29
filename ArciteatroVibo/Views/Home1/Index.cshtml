@@ -39,7 +39,9 @@
         </div>
        
         <div class="container justify-content-between ">
-            <div class="m-5">  <a asp-action="Edit" class="pinkButton " asp-route-id="@item.IdHome1">Modifica Home</a></div>
+            <div id="liveAlertPlaceholder"></div>
+            <div class="m-5 text-center">  <a asp-action="Edit" asp-route-id="@item.IdHome1"> <img src="~/immagini/ModificaHome.png" width="200px" alt="Alternate Text" id="liveAlertBtn" /></a></div>
+         
         <h5 class="text-danger mt-5">Chi siamo</h5>
         <div class="row border-bottom border-danger border-top  mt-2">
             <div class="col-6">
@@ -128,7 +130,7 @@
     
 </div>
 </div>
-<
+    
 @section scripts {
 
     <script>

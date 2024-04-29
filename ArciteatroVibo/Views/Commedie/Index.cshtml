@@ -9,6 +9,7 @@
     <div class="container ">
 
         <h4 class="titlePage ">Commedie</h4>
+        <div class="m-5 text-center">  <a asp-action="Create"> <img src="~/immagini/NuovaCommedia.png" width="200px" alt="Alternate Text" /></a></div>
         @foreach (var item in Model)
         {
             <div class="container ">
@@ -31,10 +32,10 @@
                 
 
             </div>
-
-            @*    <a asp-action="Edit" asp-route-id="@item.IdCommedia">Edit</a>
-        <a asp-action="Details" asp-route-id="@item.IdCommedia">Details</a>
-        <a asp-action="Delete" asp-route-id="@item.IdCommedia">Delete</a> *@
+           
+                <a asp-action="Edit" asp-route-id="@item.IdCommedia"> <img src="~/immagini/Modifica.png" width="140px" alt="Alternate Text" class="me-4"id="liveAlertBtn" /></a>
+            <a asp-action="Delete" asp-route-id="@item.IdCommedia"> <img src="~/immagini/Elimina.png" width="140px" alt="Alternate Text" id="liveAlertBtn" /></a>
+    
         }
     </div>
 </div>

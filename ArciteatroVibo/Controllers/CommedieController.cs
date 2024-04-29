@@ -137,7 +137,7 @@ namespace ArciteatroVibo.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("IdCommedia,Titolo,Autore,Trama,Locandina,Regia,Interpreti,Extra,Foto1,Foto2,Foto3")] Commedie commedie)
+        public async Task<IActionResult> Edit(int id, [Bind("IdCommedia,Titolo,Autore,Trama,Locandina,Regia,Interpreti,Extra,Foto1,Foto2,Foto3,LocandinaUp,Foto1Up,Foto2Up,Foto3Up")] Commedie commedie)
         {
             if (id != commedie.IdCommedia)
             {
@@ -146,25 +146,56 @@ namespace ArciteatroVibo.Controllers
 
             if (ModelState.IsValid)
             {
-                try
+                if (commedie.LocandinaUp != null && commedie.LocandinaUp.Length > 0)
                 {
-                    _context.Update(commedie);
-                    await _context.SaveChangesAsync();
+                    var path = Path.Combine(_hostingEnvironment.WebRootPath, "immagini/Locandine", commedie.LocandinaUp.FileName);
+
+                    using (var Filestream = new FileStream(path, FileMode.Create))
+                    {
+                        await commedie.LocandinaUp.CopyToAsync(Filestream);
+                    }
+                    commedie.Locandina = "/immagini/Locandine/" + commedie.LocandinaUp.FileName;
                 }
-                catch (DbUpdateConcurrencyException)
+
+                if (commedie.Foto1Up != null && commedie.Foto1Up.Length > 0)
                 {
-                    if (!CommedieExists(commedie.IdCommedia))
+                    var path = Path.Combine(_hostingEnvironment.WebRootPath, "immagini/Commedie", commedie.Foto1Up.FileName);
+
+                    using (var Filestream = new FileStream(path, FileMode.Create))
                     {
-                        return NotFound();
+                        await commedie.Foto1Up.CopyToAsync(Filestream);
                     }
-                    else
-                    {
-                        throw;
-                    }
+                    commedie.Foto1 = "/immagini/Commedie/" + commedie.Foto1Up.FileName;
+
                 }
+
+                if (commedie.Foto2Up != null && commedie.Foto2Up.Length > 0)
+                {
+                    var path = Path.Combine(_hostingEnvironment.WebRootPath, "immagini/Commedie", commedie.Foto2Up.FileName);
+
+                    using (var Filestream = new FileStream(path, FileMode.Create))
+                    {
+                        await commedie.Foto2Up.CopyToAsync(Filestream);
+                    }
+                    commedie.Foto2 = "/immagini/Commedie/" + commedie.Foto2Up.FileName;
+                }
+
+                if (commedie.Foto3Up != null && commedie.Foto3Up.Length > 0)
+                {
+                    var path = Path.Combine(_hostingEnvironment.WebRootPath, "immagini/Commedie", commedie.Foto3Up.FileName);
+
+                    using (var Filestream = new FileStream(path, FileMode.Create))
+                    {
+                        await commedie.Foto3Up.CopyToAsync(Filestream);
+                    }
+                    commedie.Foto3 = "/immagini/Commedie/" + commedie.Foto3Up.FileName;
+                }
+
+                _context.Update(commedie);
+                await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(commedie);
+                return View(commedie);
         }
 
         // GET: Commedie/Delete/5

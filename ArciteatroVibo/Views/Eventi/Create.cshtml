@@ -24,7 +24,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="Data" class="control-label"></label>
-                <input asp-for="Data" class="form-control" />
+                <input asp-for="Data" class="form-control" id="dataEvento" />
                 <span asp-validation-for="Data" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -34,7 +34,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="InCorso" class="control-label"></label>
-                <input asp-for="InCorso" class="form-check-input" />
+                <input asp-for="InCorso" class="form-check-input" id="inCorso" hidden/>
                 <span asp-validation-for="InCorso" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -57,7 +57,7 @@
 <div>
     <a asp-action="Index">Back to List</a>
 </div>
-
+<script src="~/jsCustom/JavaScript1.js" asp-append-version="true"></script>
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
