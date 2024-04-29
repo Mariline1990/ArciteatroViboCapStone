@@ -24,7 +24,7 @@
             </div>
 
         </div>
-
+               
         @* <div>
     <a asp-action="Edit" asp-route-id="@item.IdHome1">Edit</a> |
     <a asp-action="Details" asp-route-id="@item.IdHome1">Details</a> |
@@ -35,9 +35,11 @@
     <div class="interlinea text-light ">
         <p class="my-0">Se ci vuoi sostenere o vuoi contribuire ai nostri progetti<a href="https://portale.arci.it/preadesione" class="fw-bold text-light"> vai al tesseramento!</a></p>
     </div>
-    </div>
-
-    <div class="container justify-content-between ">
+          
+        </div>
+       
+        <div class="container justify-content-between ">
+            <div class="m-5">  <a asp-action="Edit" class="pinkButton " asp-route-id="@item.IdHome1">Modifica Home</a></div>
         <h5 class="text-danger mt-5">Chi siamo</h5>
         <div class="row border-bottom border-danger border-top  mt-2">
             <div class="col-6">
