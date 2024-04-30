@@ -25,8 +25,12 @@
 </div>
 <div class=" container my-5">
     <div class="row justify-content-between">
+        @if (User.IsInRole("Admin"))
+        {
+            <div class=" text-center my-5 me-5"> <a asp-action="Create"> <img src="~/immagini/AggiungiEdizione.png" width="400px" alt="Alternate Text" id="liveAlertBtn" /></a></div>
+        }
 
-        <div class=" text-center my-5 me-5"> <a asp-action="Create" > <img src="~/immagini/AggiungiEdizione.png" width="400px" alt="Alternate Text" id="liveAlertBtn" /></a></div>
+        
         @foreach (var item in Model)
         {
             <div class="col-5">
@@ -37,7 +41,12 @@
                         <div class="col-6">
 
                             <h5 class="aragostaFont card-title pt-2 m-2">@Html.DisplayFor(modelItem => item.Edizione)</h5>
-                            <div class="text-end m-4">   <a asp-action="Edit" asp-route-id="@item.IdRassegna"> <img src="~/immagini/Modifica.png" width="150px" alt="Alternate Text" id="liveAlertBtn" /></a></div>
+                            @if (User.IsInRole("Admin"))
+                            {
+                                <div class="text-end m-4">   <a asp-action="Edit" asp-route-id="@item.IdRassegna"> <img src="~/immagini/Modifica.png" width="150px" alt="Alternate Text" id="liveAlertBtn" /></a></div>
+                            }
+
+                            
                         </div>
                         <div class="col-5 m-2 text-end">
                             <a asp-action="Details" class=" btn btn pinkButtonSmall " asp-route-id="@item.IdRassegna">Esplora</a>

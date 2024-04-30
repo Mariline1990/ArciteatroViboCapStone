@@ -58,23 +58,14 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between" >
                     
                     <ul class="navbar-nav flex-grow-1 justify-content-center" >
-                        @if(User.IsInRole("User") || User.IsInRole("Admin"))
+                        @if (User.IsInRole("Admin"))
                         {
                             <li class="nav-item px-4">
-                                <a class="nav-link" style="color:#9b1b1b" asp-area="" asp-controller="Login" asp-action="Logout">Logout</a>
+                                <a class="nav-link fw-bold" style="color:#9b1b1b" asp-area="" asp-controller="Richieste" asp-action="Index">Iscrizioni</a>
                             </li>
+                        
+                        
                         }
-                        else
-                        {
-                            <li class="me-0">
-                                <a class="nav-link" style="color:#9b1b1b" asp-area="" asp-controller="Login" style="display: inline" asp-action="Create">Login</a>
-                                
-                            </li>
-                        }
-                       
-                        <li class="mx-0 mt-2">
-                            <img src="~/immagini/mask-happly-svgrepo-com.svg" height="30" />
-                        </li>
                         <li class="nav-item px-4">
                             <a class="nav-link " style="color:#9b1b1b" asp-area="" asp-controller="Home1" asp-action="Index">Home</a>
                         </li> 
@@ -90,6 +81,23 @@
                         </li>
                         <li class="nav-item px-4">
                             <a class="nav-link" style="color:#9b1b1b" asp-area="" asp-controller="Contatti" asp-action="Details" asp-route-id="1"> Contatti</a>
+                        </li>
+                        @if (User.IsInRole("User") || User.IsInRole("Admin"))
+                        {
+                            <li class="nav-item px-4">
+                                <a class="nav-link" style="color:#9b1b1b" asp-area="" asp-controller="Login" asp-action="Logout">Logout</a>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="me-0">
+                                <a class="nav-link" style="color:#9b1b1b" asp-area="" asp-controller="Login" style="display: inline" asp-action="Create">Login</a>
+
+                            </li>
+                        }
+
+                        <li class="mx-0 mt-2">
+                            <img src="~/immagini/mask-happly-svgrepo-com.svg" height="30" />
                         </li>
                        
                     </ul>
