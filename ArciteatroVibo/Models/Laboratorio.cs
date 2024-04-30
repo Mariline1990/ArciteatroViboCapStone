@@ -24,9 +24,11 @@ public partial class Laboratorio
     [Column("Telefono")]
     [RegularExpression(@"^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$", ErrorMessage = "Not a valid phone number")]
     public string? Telefono { get; set; }
-
+    [DataType(DataType.Date)]
+    [DisplayFormat(DataFormatString = "{0:dd.MM.yyyy}", ApplyFormatInEditMode = true)]
     public DateOnly DataInizio { get; set; }
-
+    [DataType(DataType.Date)]
+    [DisplayFormat(DataFormatString = "{0:dd.MM.yyyy}", ApplyFormatInEditMode = true)]
     public DateOnly? DataFine { get; set; }
 
     public decimal? Costo { get; set; }

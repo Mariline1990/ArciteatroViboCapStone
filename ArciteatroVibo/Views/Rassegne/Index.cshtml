@@ -18,7 +18,7 @@
                 Rassegna: Il coraggio delle Donne
             </h4>
             <p>
-                Chupa chups chocolate caramels sesame snaps pastry. Sugar plum jelly soufflé biscuit tootsie roll caramels brownie. Chocolate tootsie roll bonbon toffee croissant gingerbread cupcake jelly beans. Marshmallow tiramisu tootsie roll cheesecake cotton candy soufflé powder gummi bears bonbon. Pie cookie powder danish sesame snaps sweet apple pie. Chocolate ice cream bonbon cake wafer pastry. Toffee jelly pudding jelly beans jelly-o carrot cake sweet roll ice cream. Gummies marzipan lollipop chocolate bar danish. Chocolate cake jelly-o cupcake chocolate wafer apple pie topping. Soufflé pudding wafer brownie oat cake. Sesame snaps brownie soufflé liquorice sweet roll gummies. Carrot cake icing chupa chups cake brownie. Gingerbread topping sesame snaps tootsie roll gummi bears. Tootsie roll shortbread carrot cake lollipop soufflé ice cream danish tootsie roll.
+                La rassegna nasce nel 2017 quando durante la “Giornata per l’eliminazione della violenza contro le donne” abbiamo ricordato Maria Chindamo: abbiamo rappresentato da allora STORIE di DONNE CORAGGIOSE che hanno sfidato la ndrangheta e di Donne che non ce l’’hanno fatta, come le Storie tratte dall’ Archivio di Stato di Vibo Valentia e ancora STORIE di PASSIONI agite con successo in tutti i campi: nella Ricerca scientifica, nell’avvocatura, nella politica, nell’Arte: Comunque Donne che hanno tracciato la strada per la conquista dei Diritti. Nel 2023 anche Storie di Gaslighting insieme all’’Esperta del Centro Antiviolenza dell’ Associazione: “Attivamente coinvolte” e fatto l’esperienza di portare queste Storie in una Scuola S.Di Vibo.
             </p>
         </div>
     </div>
@@ -31,7 +31,7 @@
         }
 
         
-        @foreach (var item in Model)
+        @foreach (var item in Model.Reverse())
         {
             <div class="col-5">
                 <h5 class="aragostaFont"> @Html.DisplayFor(modelItem => item.Data)</h5>

@@ -12,7 +12,7 @@
 @if(User.IsInRole("Admin"))
 {
     <div class="m-5 text-center">  <a asp-action="Create"> <img src="~/immagini/NuovoEvento.png" width="200px" alt="Alternate Text" /></a></div>
-})
+}
 
 
 @foreach (var item in Model.Reverse())
@@ -72,7 +72,7 @@
                         <a asp-action="Delete" asp-route-id="@item.IdEvento"> <img src="~/immagini/Elimina.png" width="200px" alt="Alternate Text" id="liveAlertBtn" /></a>
 
                         <a asp-action="Edit" asp-route-id="@item.IdEvento"> <img src="~/immagini/Modifica.png" width="200px" alt="Alternate Text" id="liveAlertBtn" /></a>
-                    })
+                    }
 
                  
 

@@ -14,7 +14,7 @@
             <div class="m-5 text-center">  <a asp-action="Create"> <img src="~/immagini/NuovaCommedia.png" width="200px" alt="Alternate Text" /></a></div>
         }
        
-        @foreach (var item in Model)
+        @foreach (var item in Model.Reverse())
         {
             <div class="container ">
                 <div class="row mt-5 justify-content-between">
@@ -25,7 +25,7 @@
                         <h5 class="authorColor text-end">  @Html.DisplayFor(modelitem => item.Autore)</h5>
                     </div>
                 </div>
-                <div class="row paddingPage fade-in">
+                <div class="row paddingPage fade-in mb-3">
                     <p>  @Html.DisplayFor(modelitem => item.Trama)</p>
                     <div class=" row container justify-content-end">
                         <div class="col-1 py-3">
@@ -38,9 +38,10 @@
             </div>
             @if (User.IsInRole("Admin"))
             {
+                <div class="  pb-4">
                 <a asp-action="Edit" asp-route-id="@item.IdCommedia"> <img src="~/immagini/Modifica.png" width="140px" alt="Alternate Text" class="me-4" id="liveAlertBtn" /></a>
                 <a asp-action="Delete" asp-route-id="@item.IdCommedia"> <img src="~/immagini/Elimina.png" width="140px" alt="Alternate Text" id="liveAlertBtn" /></a>
-
+                </div>
             }
            
                
