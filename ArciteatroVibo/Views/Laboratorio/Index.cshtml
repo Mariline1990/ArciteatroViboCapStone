@@ -7,6 +7,7 @@
 
 <div class="container  mt-3 ">
     <h4 class="titlePage">Laboratori</h4>
+    <div class="text-center m-5"> <a asp-action="Create"> <img src="~/immagini/nuovoLab.png" width="300px" alt="Alternate Text" id="liveAlertBtn" /></a></div>
     @foreach (var item in Model)
     {
 
@@ -16,7 +17,6 @@
                     <div class="col-xl-4">
                         <img src="@Url.Content(item.Immagine)" class="card-img-lab slit-in-vertical" alt="...">
                     </div>
-
                     <div class="col-xl-8 p-4 cardLab position-relative">
                         @if(item.PostiLiberi > 0)
                         {

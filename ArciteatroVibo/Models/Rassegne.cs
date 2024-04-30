@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ArciteatroVibo.Models;
@@ -15,7 +16,8 @@ public partial class Rassegne
     public string? Testo { get; set; }
 
     public string? Edizione { get; set; }
-
+    [DataType(DataType.Date)]
+    [DisplayFormat(DataFormatString = "{0:dd.MM.yyyy}", ApplyFormatInEditMode = true)]
     public DateOnly? Data { get; set; }
 
     public string? Luogo { get; set; }

@@ -104,31 +104,27 @@ namespace ArciteatroVibo.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("IdRassegna,Titolo,Locandina,Testo,Edizione,Data,Luogo,Regia,Interpreti,Extra")] Rassegne rassegne)
+        public async Task<IActionResult> Edit(int id, [Bind("IdRassegna,Titolo,Locandina,Testo,Edizione,Data,Luogo,Regia,Interpreti,Extra,LocandinaUp")] Rassegne rassegne)
         {
             if (id != rassegne.IdRassegna)
             {
                 return NotFound();
             }
-
+            ModelState.Remove("Locandina");
             if (ModelState.IsValid)
             {
-                try
+                if (rassegne.LocandinaUp != null && rassegne.LocandinaUp.Length > 0)
                 {
-                    _context.Update(rassegne);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!RassegneExists(rassegne.IdRassegna))
+                    var path = Path.Combine(_hostingEnvironment.WebRootPath, "immagini/Locandine", rassegne.LocandinaUp.FileName);
+
+                    using (var Filestream = new FileStream(path, FileMode.Create))
                     {
-                        return NotFound();
+                        await rassegne.LocandinaUp.CopyToAsync(Filestream);
                     }
-                    else
-                    {
-                        throw;
-                    }
+                    rassegne.Locandina = "/immagini/Locandine/" + rassegne.LocandinaUp.FileName;
                 }
+                _context.Update(rassegne);
+                await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
             return View(rassegne);

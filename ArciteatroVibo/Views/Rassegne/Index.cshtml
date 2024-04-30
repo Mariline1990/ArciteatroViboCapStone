@@ -24,10 +24,12 @@
     </div>
 </div>
 <div class=" container my-5">
-    <div class="row">
+    <div class="row justify-content-between">
+
+        <div class=" text-center my-5 me-5"> <a asp-action="Create" > <img src="~/immagini/AggiungiEdizione.png" width="400px" alt="Alternate Text" id="liveAlertBtn" /></a></div>
         @foreach (var item in Model)
         {
-            <div class="col-6">
+            <div class="col-5">
                 <h5 class="aragostaFont"> @Html.DisplayFor(modelItem => item.Data)</h5>
                 <div class="card" style="width: 30rem;">
                     <img src="@Url.Content(item.Locandina)" class="card-img-small" alt="...">
@@ -35,6 +37,7 @@
                         <div class="col-6">
 
                             <h5 class="aragostaFont card-title pt-2 m-2">@Html.DisplayFor(modelItem => item.Edizione)</h5>
+                            <div class="text-end m-4">   <a asp-action="Edit" asp-route-id="@item.IdRassegna"> <img src="~/immagini/Modifica.png" width="150px" alt="Alternate Text" id="liveAlertBtn" /></a></div>
                         </div>
                         <div class="col-5 m-2 text-end">
                             <a asp-action="Details" class=" btn btn pinkButtonSmall " asp-route-id="@item.IdRassegna">Esplora</a>
@@ -48,8 +51,7 @@
 </div>
 
 
-@*               <a asp-action="Edit" asp-route-id="@item.IdRassegna">Edit</a> |
-    <a asp-action="Details" asp-route-id="@item.IdRassegna">Details</a> |
+    @* <a asp-action="Details" asp-route-id="@item.IdRassegna">Details</a> |
     <a asp-action="Delete" asp-route-id="@item.IdRassegna">Delete</a> *@
 
 
