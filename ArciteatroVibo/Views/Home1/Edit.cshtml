@@ -9,16 +9,16 @@
    
   
     <div class="col-md-7 ">
-        <div class="  mt-5 alert alert-warning alert-dismissible fade show" role="alert">
-            <strong>Attenzione!</strong> Nel form sono presenti solo elementi di Upload pertanto non sarà possibile apportare modifiche ad un singolo elemento. Proseguire solo se si hanno tutto il materiale a disposizione.
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
+       
 
         <form asp-action="Edit" enctype="multipart/form-data">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="IdHome1" />
             <h4 class="titlePage" >Modificala Home</h4>
-
+            <div class=" text-center mt-5 alert alert-light alert-dismissible fade show border border-danger shadow-lg" role="alert">
+                <strong>Attenzione!</strong> Nel form sono presenti solo elementi di Upload pertanto non sarà possibile apportare modifiche ad un singolo elemento. Proseguire solo se si hanno tutto il materiale a disposizione.
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
             <div class="container border border-danger">
                 <div class="row container justify-content-between m-2  pt-5">
                     <h3 class="aragostaFont ">Carosello</h3>

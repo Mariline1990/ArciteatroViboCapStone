@@ -125,33 +125,54 @@ namespace ArciteatroVibo.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("IdEvento,Titolo,Sottotitolo,Data,Luogo,InCorso,Testo,Locandina")] Eventi eventi)
+        public async Task<IActionResult> Edit(int id, [Bind("IdEvento,Titolo,Sottotitolo,Data,Luogo,InCorso,Testo,Locandina, LocandinaUp")] Eventi eventi)
         {
             if (id != eventi.IdEvento)
             {
                 return NotFound();
             }
 
+            string oggiFormattato = DateTime.Now.ToString("MM/dd/yyyy");
+
+            // Non è necessario creare un nuovo oggetto DateTime se eventi.Data è già un DateTime valido
+            DateTime theDay = new DateTime(eventi.Data?.Year ?? 1, eventi.Data?.Month ?? 1, eventi.Data?.Day ?? 1);
+
+
+            // Confronto delle date
+            int compareValue = theDay.Date.CompareTo(DateTime.Today);
+
+            if (compareValue == 0)
+            {
+                eventi.InCorso = true;
+            }
+            else if (compareValue < 0)
+            {
+                eventi.InCorso = false;
+            }
+            else
+            {
+                eventi.InCorso = true;
+            }
+
             if (ModelState.IsValid)
             {
-                try
+                if (eventi.LocandinaUp != null && eventi.LocandinaUp.Length > 0)
                 {
-                    _context.Update(eventi);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!EventiExists(eventi.IdEvento))
+                    var path = Path.Combine(_hostingEnvironment.WebRootPath, "immagini/Locandine", eventi.LocandinaUp.FileName);
+
+                    using (var Filestream = new FileStream(path, FileMode.Create))
                     {
-                        return NotFound();
+                        await eventi.LocandinaUp.CopyToAsync(Filestream);
                     }
-                    else
-                    {
-                        throw;
-                    }
+
+                    eventi.Locandina = "/immagini/Locandine/" + eventi.LocandinaUp.FileName;
                 }
-                return RedirectToAction(nameof(Index));
+
+                _context.Update(eventi); 
+                await _context.SaveChangesAsync(); 
+                return RedirectToAction(nameof(Index)); 
             }
+
             return View(eventi);
         }
 

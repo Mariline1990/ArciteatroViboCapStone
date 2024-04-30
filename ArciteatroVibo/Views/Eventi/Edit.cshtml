@@ -8,11 +8,15 @@
 
 <h4>Eventi</h4>
 <hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Edit">
+<div class="container "></div>
+<div class="row justify-content-center ">
+    <div class="col-md-7  border border-danger">
+        <div class="row container justify-content-between">
+            <div class="col-md-4 m-5">
+        <form asp-action="Edit" enctype="multipart/form-data">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="IdEvento" />
+            <h4 class="aragostaFont">Aggiungi evento</h4>
             <div class="form-group">
                 <label asp-for="Titolo" class="control-label"></label>
                 <input asp-for="Titolo" class="form-control" />
@@ -25,7 +29,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="Data" class="control-label"></label>
-                <input asp-for="Data" class="form-control" />
+                <input asp-for="Data" class="form-control" id="dataEvento" />
                 <span asp-validation-for="Data" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -33,25 +37,29 @@
                 <input asp-for="Luogo" class="form-control" />
                 <span asp-validation-for="Luogo" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="InCorso" class="control-label"></label>
-                <input asp-for="InCorso" class="form-control" />
-                <span asp-validation-for="InCorso" class="text-danger"></span>
+            <div class="form-group">     
+                <input asp-for="InCorso" class="form-check-input" id="inCorso" hidden/>     
             </div>
             <div class="form-group">
                 <label asp-for="Testo" class="control-label"></label>
-                <input asp-for="Testo" class="form-control" />
-                <span asp-validation-for="Testo" class="text-danger"></span>
+                <textarea asp-for="Testo" class="form-control" ></textarea>
+                        <span asp-validation-for="Testo" class="text-danger" style="height: 300px"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Locandina" class="control-label"></label>
-                <input asp-for="Locandina" class="form-control" />
+                <input asp-for="LocandinaUp" class="form-control" type="file" />
                 <span asp-validation-for="Locandina" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+                <input type="submit" value="Create" class="btn btn-primary" />
             </div>
         </form>
+            </div>
+            <div class="col-md-6 mt-5">
+                <h4>Inserisci la data nel format vedrai apparire automaticamente se l'evento è <span class="aragostaFont"> In Corso </span>o <span class="aragostaFont"> Passato</span></h4>
+              <img src="/immagini/EventiEsempio.png" class="img-fluid" alt="Alternate Text" />
+            </div>
+        </div>
     </div>
 </div>
 
