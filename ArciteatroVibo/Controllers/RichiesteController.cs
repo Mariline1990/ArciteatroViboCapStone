@@ -96,8 +96,8 @@ namespace ArciteatroVibo.Controllers
 
             if (ModelState.IsValid)
             {
-
-
+                TempData["Iscrizione"] = "Iscrizione effettuata con successo!";
+             
                 _context.Add(richieste);
                 await _context.SaveChangesAsync();
                 return RedirectToAction("Index","Laboratorio");

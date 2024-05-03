@@ -11,8 +11,14 @@
     {
         <div class="text-center m-5"> <a asp-action="Create"> <img src="~/immagini/nuovoLab.png" width="300px" alt="Alternate Text" id="liveAlertBtn" /></a></div>
     }
-
-    
+    @if(ViewBag.iscrizione != null){
+    <div class="row justify-content-center">
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            @ViewBag.iscrizione
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>    
+    </div>
+    }
     @foreach (var item in Model.Reverse())
     {
 
@@ -38,8 +44,15 @@
                         </p>
                         <div class="row justify-content-end">
                             <div class="col-3 ">
+                                @if (User.IsInRole("Admin"))
+                                {
+                                    <a asp-action="Edit" asp-route-id="@item.IdLaboratorio"> <img src="~/immagini/Modifica.png" width="200px" alt="Alternate Text" id="liveAlertBtn" /></a>
+                                    <a asp-action="Elimina" asp-route-id="@item.IdLaboratorio"> <img src="~/immagini/Elimina.png" width="200px" alt="Alternate Text" id="liveAlertBtn" /></a>
+                                }
                                 <div class=" ">
                                     <a asp-action="Details" class="   btn btn pinkButtonSmall " asp-route-id="@item.IdLaboratorio">Esplora</a>
+
+                                
 
                                 </div>
                             </div>

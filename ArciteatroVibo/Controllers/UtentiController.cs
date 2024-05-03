@@ -61,7 +61,7 @@ namespace ArciteatroVibo.Controllers
 
                 _context.Add(utente);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Create","Login");
             }
             return View(utente);
         }

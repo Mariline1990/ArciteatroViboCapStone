@@ -56,7 +56,7 @@ namespace ArciteatroVibo.Controllers
         public IActionResult Logout()
         {
             HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
-            return RedirectToAction("Index", "Home1");
+            return RedirectToAction("Create", "Login");
         }
 
 
