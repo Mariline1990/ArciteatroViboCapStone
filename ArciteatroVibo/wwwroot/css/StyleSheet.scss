@@ -1,5 +1,5 @@
 ﻿
-@import "forms";
+
 
 @mixin imageFit {
     width: 100%;
@@ -34,8 +34,6 @@
 
 body {
 
-
-
     .boldfont {
         font-weight: 600;
     }
@@ -50,10 +48,6 @@ body {
 */
 
 
-
-
-
-
     .aragostaFont {
         color: #F35B5B
     }
@@ -61,6 +55,7 @@ body {
 
     .eventiColor {
         &:nth-child(odd) {
+
             background-color: white;
 
             &:nth-child(even) {
@@ -69,6 +64,10 @@ body {
         }
     }
 
+    .inCorso{
+        background-image: url(../immagini/SfonfoEventi.jpg);
+
+    }
 
     .paddingPage {
         padding: 40px;

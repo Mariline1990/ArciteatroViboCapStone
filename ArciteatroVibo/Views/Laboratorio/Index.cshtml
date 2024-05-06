@@ -6,6 +6,14 @@
 
 
 <div class="container  mt-3 ">
+
+
+
+
+    <!-- Modal -->
+  
+
+
     <h4 class="titlePage">Laboratori</h4>
     @if (User.IsInRole("Admin"))
     {
@@ -19,10 +27,32 @@
         </div>    
     </div>
     }
+
     @foreach (var item in Model.Reverse())
     {
 
         <div class="row justify-content-center cardLabOdd ">
+              <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    ...
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <form asp-action="Delete">
+                        <input  asp-for="@item.IdLaboratorio" />
+                        <input type="submit" value="Delete" class="btn btn-danger" /> |
+                        <a asp-action="Index">Back to List</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
             <div class=" col-xxl-12  my-3 " style="max-width: 940px;">
                 <div class="row g-0">
                     <div class="col-xl-4">
@@ -47,7 +77,8 @@
                                 @if (User.IsInRole("Admin"))
                                 {
                                     <a asp-action="Edit" asp-route-id="@item.IdLaboratorio"> <img src="~/immagini/Modifica.png" width="200px" alt="Alternate Text" id="liveAlertBtn" /></a>
-                                    <a asp-action="Elimina" asp-route-id="@item.IdLaboratorio"> <img src="~/immagini/Elimina.png" width="200px" alt="Alternate Text" id="liveAlertBtn" /></a>
+                                    <a asp-action="Elimina" data-bs-toggle="modal" data-bs-target="#exampleModal" asp-route-id="@item.IdLaboratorio"> <img src="~/immagini/Elimina.png" width="200px" alt="Alternate Text" id="liveAlertBtn" /></a>
+
                                 }
                                 <div class=" ">
                                     <a asp-action="Details" class="   btn btn pinkButtonSmall " asp-route-id="@item.IdLaboratorio">Esplora</a>

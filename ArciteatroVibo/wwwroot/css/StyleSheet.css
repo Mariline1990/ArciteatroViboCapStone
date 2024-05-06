@@ -39,6 +39,9 @@ body .eventiColor:nth-child(odd) {
 body .eventiColor:nth-child(odd):nth-child(even) {
   background-color: #D38F8F;
 }
+body .inCorso {
+  background-image: url(../immagini/SfonfoEventi.jpg);
+}
 body .paddingPage {
   padding: 40px;
   border-block: 1px solid #D38F8F;

@@ -3,8 +3,12 @@
 @{
     ViewData["Title"] = "Index";
 }
-<div class="container  transition-fade" id="swup">
-    <h4 class="titlePage">Eventi</h4>
+<div class=" bg-dark transition-fade" id="swup">
+     <div class="container">
+        <h4 class="mb-0 text-light text-end py-5"> Eventi</h4>
+     </div>
+        
+   
 </div>
 
 @* uso model reverse per riordinare gli elementi nel foreach dall'ultimo al primo *@
@@ -17,18 +21,23 @@
 
 @foreach (var item in Model.Reverse())
     {
-    <div class="container-fluid eventiColor ">
+
+
+    <div class="container-fluid @( item.InCorso ? "inCorso g-0" : "eventiColor" )">
+
+
+
         <div class="container ">
 
         <div class=" row justify-content-between">
-               
-                <div class="col-6 my-5">
+
+                <div class="col-6 my-5  @( item.InCorso ? "bg-light bg-opacity-75 rounded " : "" )">
                     
-                <h4 class="  mt-5">
+                <h4 class=" fw-bold mt-5">
                         @Html.DisplayFor(modelitem => item.Titolo)
                     @if(item.InCorso == true)
                     {
-                        <span class="badge bg-dark ms-2">
+                        <span class="badge bg-black ms-2">
                             In corso
                         </span>
                     }
