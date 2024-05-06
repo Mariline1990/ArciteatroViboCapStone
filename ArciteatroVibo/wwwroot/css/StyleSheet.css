@@ -36,8 +36,8 @@ body .aragostaFont {
 body .eventiColor:nth-child(odd) {
   background-color: white;
 }
-body .eventiColor:nth-child(odd):nth-child(even) {
-  background-color: #D38F8F;
+body .eventiColor:nth-child(even) {
+  background-color: #b7b6b6;
 }
 body .inCorso {
   background-image: url(../immagini/SfonfoEventi.jpg);

@@ -55,18 +55,16 @@ body {
 
     .eventiColor {
         &:nth-child(odd) {
-
             background-color: white;
+        }
 
-            &:nth-child(even) {
-                background-color: #D38F8F;
-            }
+        &:nth-child(even) {
+            background-color: #b7b6b6;
         }
     }
 
-    .inCorso{
+    .inCorso {
         background-image: url(../immagini/SfonfoEventi.jpg);
-
     }
 
     .paddingPage {

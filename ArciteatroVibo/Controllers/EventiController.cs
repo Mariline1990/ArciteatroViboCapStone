@@ -134,7 +134,7 @@ namespace ArciteatroVibo.Controllers
 
             string oggiFormattato = DateTime.Now.ToString("MM/dd/yyyy");
 
-            // Non è necessario creare un nuovo oggetto DateTime se eventi.Data è già un DateTime valido
+           
             DateTime theDay = new DateTime(eventi.Data?.Year ?? 1, eventi.Data?.Month ?? 1, eventi.Data?.Day ?? 1);
 
 
