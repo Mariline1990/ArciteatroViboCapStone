@@ -48,6 +48,7 @@ body {
 */
 
 
+
     .aragostaFont {
         color: #F35B5B
     }
@@ -56,15 +57,26 @@ body {
     .eventiColor {
         &:nth-child(odd) {
             background-color: white;
+
+            .imm {
+                color: black;
+            }
         }
 
         &:nth-child(even) {
-            background-color: #b7b6b6;
+            background-color: #e6e4e4;
+
+            .imm {
+                color: white;
+            }
         }
     }
 
     .inCorso {
-        background-image: url(../immagini/SfonfoEventi.jpg);
+        box-shadow: 0px -10px 20px rgba(255,255,255,0.15);
+        background-image: url(../immagini/palco.jpg);
+        background-position: bottom;
+        background-size: cover;
     }
 
     .paddingPage {

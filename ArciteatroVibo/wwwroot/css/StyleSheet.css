@@ -36,11 +36,20 @@ body .aragostaFont {
 body .eventiColor:nth-child(odd) {
   background-color: white;
 }
+body .eventiColor:nth-child(odd) .imm {
+  color: black;
+}
 body .eventiColor:nth-child(even) {
-  background-color: #b7b6b6;
+  background-color: #e6e4e4;
+}
+body .eventiColor:nth-child(even) .imm {
+  color: white;
 }
 body .inCorso {
-  background-image: url(../immagini/SfonfoEventi.jpg);
+  box-shadow: 0px -10px 20px rgba(255, 255, 255, 0.15);
+  background-image: url(../immagini/palco.jpg);
+  background-position: bottom;
+  background-size: cover;
 }
 body .paddingPage {
   padding: 40px;

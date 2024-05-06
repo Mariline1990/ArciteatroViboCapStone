@@ -3,11 +3,11 @@
 @{
     ViewData["Title"] = "Index";
 }
-<div class=" bg-dark transition-fade" id="swup">
+<div class=" transition-fade" id="swup" style="background-color:#1c1c1cff">
      <div class="container">
         @if (User.IsInRole("Admin"))
         {
-            <div class="pt-5 text-center">  <a asp-action="Create"> <img src="~/immagini/NuovoEvento.png" width="200px" alt="Alternate Text" /></a></div>
+            <div class="pt-5 text-center">  <a asp-action="Create"> <img src="~/immagini/NuovoEvento.png" width="200px" style="box-shadow: 0px -10px 10px white inset " alt="Alternate Text" /></a></div>
         }
         <h4 class="mb-0 text-light  py-5 text-decoration-underline">Sul calendario!</h4>
      </div>
@@ -25,11 +25,7 @@
 
 
     <div class="container-fluid @( item.InCorso ? "inCorso g-0 " : "eventiColor" )">
-
-
-
         <div class="container ">
-
         <div class=" row justify-content-between">
 
                 <div class="col-6 my-5  @( item.InCorso ? "bg-light rounded-3 shadow-lg  p-5" : "" )">
@@ -65,22 +61,23 @@
                 </p>
             </div>
                 <div class="col-3 my-5  ">
-
-                <div>
+                  
+                <div class="mt-5">
+                        <h4 class="fw-bold imm">Locandina</h4>
+                        <span class="badge text-bg-dark bg-black mt-2">
+                            Clicca l'immagine
+                        </span>
                         <a href="@Url.Content(item.Locandina)" data-toggle="lightbox" data-size="fullscreen" data-caption="This describes the image">
                         <img src="@Url.Content(item.Locandina)"  class="d-block mt-5 w-100 shadow " alt="Alternate Text" />
 
                     </a>
-                    <p class="aragostaFont">
-                         Clicca per ingrandire
-                    </p>
+                    
                     
                 </div>
 
                     @if (User.IsInRole("Admin"))
                     {
                         <a asp-action="Delete" asp-route-id="@item.IdEvento"> <img src="~/immagini/Elimina.png" width="200px" alt="Alternate Text" id="liveAlertBtn" /></a>
-
                         <a asp-action="Edit" asp-route-id="@item.IdEvento"> <img src="~/immagini/Modifica.png" width="200px" alt="Alternate Text" id="liveAlertBtn" /></a>
                     }
 
